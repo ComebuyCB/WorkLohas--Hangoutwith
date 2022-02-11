@@ -46,7 +46,10 @@
               </div>
               <div class="form-group">
                 <div class="form-label">輸入密碼</div>
-                <input class="form-control" type="password">
+                <div class="pos-r">
+                  <input id="pwd" class="form-control" type="password">
+                  <button id="eye" class="btn btn-round w-auto pos-a loc-6 eye" type="button"></button>
+                </div>
                 <div class="mt-2">
                   <a class="a-brand" href="">忘記密碼</a>
                 </div>
@@ -58,7 +61,7 @@
           </form>
           <div class="mt-4">
             <div>還沒有帳戶嗎? <a class="a-brand" href="">註冊會員</a></div>
-            <div class="mt-2">提醒您：登入完成即表示您同意我們的
+            <div class="c-text1 mt-5 mt-md-2 lh-1.8">提醒您：登入完成即表示您同意我們的
               <a class="a-link" href="">註冊會員</a> 和
               <a class="a-link" href="">會員使用條款</a>。
             </div>
@@ -75,5 +78,21 @@
       <script>$.get('include/footer.html', (res)=>{ $('footer')[0].outerHTML=res } )</script>
     </footer>
   </div>
+  <script>
+    $('#eye').on('click',function(){
+      let inputType = $('#pwd').attr('type')
+      switch(inputType){
+        case 'password':
+          $('#eye').addClass('open')
+          $('#pwd').attr('type','text')
+        break
+        case 'text':
+          $('#eye').removeClass('open')
+          $('#pwd').attr('type','password')
+        break
+        default:
+      }
+    })
+  </script>
 </body>
 </html>
