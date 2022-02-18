@@ -76,14 +76,14 @@
     label { margin-bottom: 0; }
     h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
     input::placeholder { color: var(--text-2); }
-
+    select > option:disabled { color: var(--text-2); }
 
 
 /*######### [Plugins] #########*/
   /*====== [Plugins Modified] ======*/
     /*=== Bootstrap ===*/
       /* form components */
-        .btn { display: inline-flex; align-items: center; justify-content: center; min-width: 46px; min-height: 46px; border-radius: 8px; padding: 10px 24px; color: var(--dark); background-color: transparent; border: 1px solid transparent; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; min-width: 46px; min-height: 46px; border-radius: 8px; padding: 10px 22px; font-weight: bold; color: var(--dark); background-color: transparent; border: 1px solid transparent; white-space: nowrap; }
         .btn:focus { box-shadow: none !important; }
         @media (max-width: 991.98px) {
           .btn { width: 100%; }
@@ -96,25 +96,14 @@
 
       /* typesetting */
         /* (will only ==> sm-lg-xl ) */
-        @media (min-width: 576px) {
-          .container-sm, .container { max-width: 540px; }
-        }
-        @media (min-width: 768px) {
-          .container-md, .container-sm, .container { max-width: 540px; }
-        }
-        @media (min-width: 992px) {
-          .container-lg, .container-md, .container-sm, .container { max-width: 960px; }
-        }
-        @media (min-width: 1200px) {
-          .container-xl, .container-lg, .container-md, .container-sm, .container { max-width: 1140px; }
-        }
-        @media (min-width: 1400px) {
-          .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container { max-width: 1140px; }
-        }
+
 
 
   /*====== [Plugins SelfMade] ======*/
-    /*=== js-dragImg... ===*/
+    /*=== js-input-eye ===*/
+      .js-input-eye { position: relative; }
+      .js-eye { background: url(../img/svg/eye_slash.svg) center center no-repeat; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+      .js-eye.open { background: url(../img/svg/eye.svg) center center no-repeat; }
 
 
 
@@ -150,6 +139,9 @@
         .ta-r {text-align:right !important;}
         .ta-j {text-align:justify !important;}
 
+        .whs-n {white-space:normal !important;}
+        .whs-nw {white-space:nowrap !important;}
+
       /* flex */
         .ai-b {align-items:baseline !important;}
         .ai-c {align-items:center !important;}
@@ -171,16 +163,33 @@
         .jc-sb {justify-content:space-between !important;}
 
 
-
     /*=== typesetting ===*/
       .flex-center { display: flex; align-items: center; justify-content: center; }
       .flex-center-a { display: flex; align-items: center; }
       .flex-col { display: flex; flex-direction: column; }  
 
-      .ch-mx-2 > *:not(:first-child) { margin-left: 0.5rem }
-      .ch-mx-3 > *:not(:first-child) { margin-left: 1rem }
-      .ch-mx-4 > *:not(:first-child) { margin-left: 1.5rem }
+      .ch-gx-2 > *:not(:first-child) { margin-left: 0.5rem }
+      .ch-gx-3 > *:not(:first-child) { margin-left: 1rem }
+      .ch-gx-4 > *:not(:first-child) { margin-left: 1.5rem }
+      .ch-gy-2 > *:not(:first-child) { margin-top: 0.5rem }
+      .ch-gy-3 > *:not(:first-child) { margin-top: 1rem }
+      .ch-gy-4 > *:not(:first-child) { margin-top: 1.5rem }
 
+      @media( min-width: 576px ){
+        .w-sm-auto { width: auto !important;}
+        .w-sm-0 { width: 0 !important;}
+        .w-sm-100 { width: 100% !important;}
+      }
+      @media( min-width: 992px ){
+        .w-lg-auto { width: auto !important;}
+        .w-lg-0 { width: 0 !important;}
+        .w-lg-100 { width: 100% !important;}
+      }
+      @media( min-width: 1200px ){
+        .w-xl-auto { width: auto !important;}
+        .w-xl-0 { width: 0 !important;}
+        .w-xl-100 { width: 100% !important;}
+      }
 
 
     /*=== font ===*/
@@ -201,8 +210,8 @@
 
 
     /*=== color ===*/
-        .c-text1 { color: var(--text-1) }
-        .c-text2 { color: var(--text-2) }
+      .c-text1 { color: var(--text-1) }
+      .c-text2 { color: var(--text-2) }
 
 
     /*=== width ===*/
@@ -275,29 +284,33 @@
       .ckb > input[type=checkbox] { position: absolute; z-index: 0; opacity: 0; height: 0; width: 0; }
       .ckb > input[type=radio]:disabled + *,
       .ckb > input[type=checkbox]:disabled + * { color: var(--text-x); cursor: not-allowed; }
-
+      .ckb > input[type=radio] + *,
       .ckb > input[type=checkbox] + * { display: flex; align-items: center; }
-      .ckb > input[type=checkbox] + *::before { content: ''; display: block; margin-right: .5rem; width: 24px; height: 24px; background: url(../img/svg/Checkbox.svg) center center no-repeat; }
+      .ckb > input[type=radio] + *::before,
+      .ckb > input[type=checkbox] + *::before { content: ''; flex-shrink: 0; display: block; margin-right: .5rem; width: 24px; height: 24px; background: center center no-repeat; }
+
+      .ckb > input[type=checkbox] + *::before { background-image: url(../img/svg/Checkbox.svg); }
       .ckb > input[type=checkbox]:checked + *::before { background-image: url(../img/svg/Checkbox-checked.svg); }
       .ckb > input[type=checkbox]:disabled + *::before { background-image: url(../img/svg/Checkbox-x.svg); }
       .ckb > input[type=checkbox]:disabled:checked + *::before { background-image: url(../img/svg/Checkbox-x-checked.svg); }
-
-      .ckb > input[type=radio] + * { display: flex; align-items: center; }
-      .ckb > input[type=radio] + *::before { content: ''; display: block; margin-right: .5rem; width: 24px; height: 24px; background: url(../img/svg/Radio.svg) center center no-repeat; }
+      
+      .ckb > input[type=radio] + *::before { background-image: url(../img/svg/Radio.svg); }
       .ckb > input[type=radio]:checked + *::before { background-image: url(../img/svg/Radio-checked.svg); }
       .ckb > input[type=radio]:disabled + *::before { background-image: url(../img/svg/Radio-x.svg); }
       .ckb > input[type=radio]:disabled:checked + *::before { background-image: url(../img/svg/Radio-x-checked.svg); }
         /* e.g.
           <label class="ckb">
             <input type="radio">
-            <div>Yes</div>
+            <div>
+              <div>Yes</div>
+            </div>
           </label>
         */
 
       /* ckb Selector */
-      .ckb.ckbBox > input + * { min-height: 46px; min-width: 46px; border-radius: 16px; border: solid 2px var(--border); padding: 12px 24px; font-weight: bold; }
+      .ckb.ckbBox > input + * { min-height: 46px; min-width: 46px; border-radius: 16px; border: solid 2px var(--border); padding: 10px 22px; font-weight: bold; }
       .ckb.ckbBox > input + *::before { margin-right: 16px; }
-      .ckb.ckbBox.ckbHide > input + * { padding: 6px 24px; }
+      .ckb.ckbBox.ckbHide > input + * { padding: 8px 22px; }
       .ckb.ckbBox.ckbHide > input + *::before { display: none; }
       .ckb.ckbBox > input:checked + * { border-color: var(--brand); }
       .ckb.ckbBox > input:disabled + * { border-color: var(--border); }
@@ -313,19 +326,24 @@
           </label>
         */
 
-    /* form */
-      .error { color: var(--danger); font-size: var(--h5); margin-top: .25rem; }
-
 
     /*====== [Templates] ======*/
       /*=== form ===*/
-        .form-body > .form-group:not(:first-child) { margin-top: 1.5rem; }
+        .form-body > .form-section:not(:first-child) { margin-top: 2.5rem; }
+        .form-body > *:not(:first-child),
+        .form-section > *:not(:first-child) { margin-top: 1.5rem; }
+        .form-section .form-title { font-size: var(--h3); font-weight: bold; }
         .form-foot { display: flex; margin-top: 2.5rem; justify-content: flex-end; }
+        .form-desc { font-size: var(--h5); margin-top: .5rem; }
+        .error { color: var(--danger); font-size: var(--h5); margin-top: .5rem; }
+
 
 
       /*=== title ===*/
-        .page-title { font-size: var(--h1); font-weight: bold; text-align: center; margin-bottom: 40px; }
-
+        .page-header { position: relative; display: flex; align-items: center; margin-bottom: 40px; }
+        .page-prev { position: absolute; left: 0; top: -4px; background: url(../img/svg/Arrow.svg) center center no-repeat; }
+        .page-title { font-size: var(--h1); font-weight: bold; text-align: center; margin: 0 auto; padding: 0 54px; line-height: 38px; }
+        .page-close { position: absolute; right: 0; top: -4px; background: url(../img/svg/Dismiss.svg) center center no-repeat; }
 
       /*=== background ===*/
         @media( min-width: 992px ){
@@ -333,9 +351,8 @@
         }
 
 
-      /*=== eye ===*/
-        .eye { background: url(../img/svg/eye_slash.svg) center center no-repeat; }
-        .eye.open { background: url(../img/svg/eye.svg) center center no-repeat; }
+      /*=== modal ===*/
+        .modal-content { border-radius: 1rem; }
 
 
 
@@ -346,6 +363,10 @@
       @media ( min-width: 992px ){
 
       }
+      .header-link { position: relative; color: var(--text-2); font-weight: bold; }
+      .header-link::after { content: ''; position: absolute; width: 18px; height: 2px; bottom: 0; left: 50%; transform: translateX(-50%); transition: .15s background-color ease-in-out; }
+      .header-link.active, .header-link:hover { color: var(--dark); }
+      .header-link.active::after, .header-link:hover::after { background-color: var(--dark); }
 
 
     /*=== footer ===*/
@@ -359,3 +380,10 @@
 
   /*====== [Current Page] ======*/
     /*=== #login、#about... ===*/
+
+
+    @media( min-width: 576px ){}
+    @media( min-width: 768px ){}
+    @media( min-width: 992px ){}
+    @media( min-width: 1200px ){}
+    @media( min-width: 1400px ){}

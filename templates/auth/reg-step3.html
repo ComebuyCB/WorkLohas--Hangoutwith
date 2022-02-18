@@ -21,10 +21,8 @@
   <!-- main -->
   <link href="/static/common/css/main.css" rel="stylesheet">
   <script src="/static/common/js/main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-  <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
 </head>
-<body>
+<body class="bg-login">
   <div id="wrap">
     <header>
       <script>$.get('/templates/include/header.html', (res)=>{ $('header')[0].outerHTML=res } )</script>
@@ -32,26 +30,28 @@
     
     <main>
       <div class="container">
-        <h1> 123</h1>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          Launch static backdrop modal
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="page-header">
-                  <button type="button" class="btn btn-white btn-round page-prev"></button>
-                  <h2 class="page-title">興趣偏好設定</h1>
-                  <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal"></button>
-                </div>
-              <div class="modal-body">
-
+        <div class="max-w-560 mx-auto">
+          <div class="page-header">
+            <a class="page-prev btn btn-white btn-round" href="javascript: history.back()"></a>
+            <h1 class="page-title">Instagram 綁定</h1>
+          </div>
+          <form>
+            <div class="form-body">
+              <div class="form-group">
+                <div class="form-label">IG帳號</div>
+                <input type="text" class="form-control" name="">
+                <label class="ckb mt-2">
+                  <input type="checkbox">
+                  <div>
+                    <div class="lh-1.8">同意將IG名稱顯示於平台上</div>
+                  </div>
+                </label>
               </div>
             </div>
-          </div>
+            <div class="form-foot">
+              <button class="btn btn-brand">送出</button>
+            </div>
+          </form>
         </div>
       </div>
     </main>
@@ -64,8 +64,5 @@
       <script>$.get('/templates/include/footer.html', (res)=>{ $('footer')[0].outerHTML=res } )</script>
     </footer>
   </div>
-  <script>
-
-  </script>
 </body>
 </html>
