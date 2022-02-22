@@ -17,7 +17,13 @@
   <!-- plugins -->
   <link href="/static/plugins/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet">
   <script src="/static/plugins/svg-inject-v1.2.3/svg-inject.min.js"></script>
+
+  <!-- <link href="/static/plugins/Swiper-6.8.4/swiper-bundle.min.css" rel="stylesheet">
+  <script src="/static/plugins/Swiper-6.8.4/swiper-bundle.min.js"></script> -->
   
+  <link href="https://unpkg.com/swiper@8/swiper-bundle.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
   <!-- main -->
   <link href="/static/common/css/main.css" rel="stylesheet">
   <script src="/static/common/js/main.js"></script>
@@ -32,29 +38,286 @@
     
     <main>
       <div class="container">
-        <h1> 123</h1>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          Launch static backdrop modal
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="page-header">
-                  <button type="button" class="btn btn-white btn-round page-prev"></button>
-                  <h2 class="page-title">興趣偏好設定</h1>
-                  <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal"></button>
+        <div class="mb-3 text-end">
+          <button class="btn btn-brand-ol iconText w-auto" data-bs-toggle="modal" data-bs-target="#modal-hobby">
+            <img src="/static/common/img/svg/Settings.svg" onload="SVGInject(this)"> 興趣偏好
+          </button>
+        </div>
+        <div class="row g-3">
+          <div js-html-repeat="7" class="col-lg-4">
+            <div id="user-123" class="pCard">
+              <div class="pCard-top">
+                <div class="swiper swiper-container SwipeImage">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="ratio ratio-1x1 img-full" style="background-image: url(https://picsum.photos/300/400);"></div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="ratio ratio-1x1 img-full" style="background-image: url(https://picsum.photos/300/300);"></div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="ratio ratio-1x1 img-full" style="background-image: url(https://picsum.photos/400/400);"></div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="ratio ratio-1x1 img-full" style="background-image: url(https://picsum.photos/300/200);"></div>
+                    </div>
+                  </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
                 </div>
-              <div class="modal-body">
 
+                <div class="pCard-top-close">
+                  <button class="btn btn-white btn-round js-close-pCard">
+                    <img src="/static/common/img/svg/Dismiss.svg">
+                  </button>
+                </div>
+
+                <div class="pCard-top-text">
+                  <div class="ch-gy-2">
+                    <div class="swiper swiper-container SwipeBadge">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide w-auto">
+                          <div class="pCard-badge">Coffee Elite</div>
+                        </div>
+                        <div class="swiper-slide w-auto">
+                          <div class="pCard-badge">Movie star</div>
+                        </div>
+                        <div class="swiper-slide w-auto">
+                          <div class="pCard-badge">Coffee Elite</div>
+                        </div>
+                        <div class="swiper-slide w-auto">
+                          <div class="pCard-badge">Movie star</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fs-h3">動森小廚神 🐣 小菜雞的廚房</div>
+                    <div class="fs-h5 flex-center-a ch-gx-3">
+                      <div class="flex-iconText"><img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span>45，台北市</span></div>
+                      <div class="flex-iconText"><img src="/static/common/img/svg/heart.svg" onload="SVGInject(this)"><span>1000</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pCard-bot">
+                <div class="d-flex justify-content-between">
+                  <button class="btn btn-brand w-auto js-modal-hangout">
+                    <img class="me-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)">
+                    Lets Hangout
+                  </button>
+                  <button class="btn btn-brand-ol btn-round js-modal-heart">
+                    <img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)">
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </main>
+
+
+    <div class="modal fade" id="modal-hobby">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="page-header">
+              <h2 class="page-title">興趣偏好設定</h2>
+              <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="form-body">
+              <div class="form-group">透過興趣認識新朋友，交流分享生活點滴，立刻挑選興趣看誰願意和你來一個知性的交流。</div>
+              <div class="form-group">
+                <label class="form-label">對象 (可複選)</label>
+                <div class="flex-g-2">
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="checkbox">
+                    <div>
+                      <div>男</div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="checkbox">
+                    <div>
+                      <div>女</div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">興趣</label>
+                <div class="flex-g-2">
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="checkbox">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/coffee.svg"> Coffee Chat
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="checkbox">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/tree.svg"> Outdoor activity
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="checkbox">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/movie.svg"> Movie Time
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="checkbox">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/microphone.svg"> KTV Super Idol
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="checkbox">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/foodie.svg"> Foodie
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="checkbox">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/concert.svg"> Concert
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-foot">
+                <button type="button" class="btn btn-brand">儲存</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-bot fade" id="modal-heart" data-bs-backdrop="static">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="page-header">
+              <h2 class="page-title">送愛心</h2>
+              <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <form>
+              <input type="hidden" name="userId">
+              <div class="form-body">
+                <div class="form-section">
+                  <div class="form-group">
+                    <div>贈送超過100顆愛心，立刻享有留言功能~</div>
+                  </div>
+                  <div class="form-group">
+                    <div class="flex-center-a ch-gx-3">
+                      <button type="button" class="btn btn-white btn-round"><img src="/static/common/img/svg/Minus.svg"></button>
+                      <input type="number" class="form-control" style="width: 100px" value="0">
+                      <button type="button" class="btn btn-white btn-round"><img src="/static/common/img/svg/Plus.svg"></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-section">
+                  <div class="form-group">
+                    <label class="form-label">留言</label>
+                    <textarea class="form-control" rows="5" placeholder="分享自我介紹訊息增加興趣交流的機會"></textarea>
+                    <div class="form-desc">留言時請遵守留言規則。</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-foot">
+                <button type="button" class="btn btn-brand">送出</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal modal-page fade" id="modal-hangout-step1">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="page-header">
+              <h2 class="page-title">邀約表單</h2>
+              <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div>
+              <input type="hidden" name="userId">
+              <div class="form-group">
+                <label class="form-label">要做什麼呢？</label>
+                <div class="flex-g-2">
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="radio" name="hangout-location">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/coffee.svg"> Coffee Chat
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="radio" name="hangout-location">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/tree.svg"> Outdoor activity
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="radio" name="hangout-location">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/movie.svg"> Movie Time
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="radio" name="hangout-location">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/microphone.svg"> KTV Super Idol
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="radio" name="hangout-location">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/foodie.svg"> Foodie
+                      </div>
+                    </div>
+                  </label>
+                  <label class="ckb ckbBox ckbHide">
+                    <input type="radio" name="hangout-location">
+                    <div>
+                      <div class="flex-iconText">
+                        <img src="/static/common/img/svg/concert.svg"> Concert
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <div id="modal">
       <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
@@ -65,6 +328,57 @@
     </footer>
   </div>
   <script>
+    $(function(){
+      new Swiper('.SwipeBadge', {
+        slidesPerView: 'auto',
+        autoplay: true,
+        spaceBetween: 15,
+      })
+  
+      new Swiper('.SwipeImage', {
+        on: {
+          beforeInit: ()=>{
+            $.each( $('.SwipeImage'), (idx, ele) => {
+              if ( $(ele).find('.swiper-slide').length === 1 ){
+                $(ele).find('.swiper-wrapper').addClass("disabled")
+                $(ele).find('.swiper-button-prev').addClass("d-none")
+                $(ele).find('.swiper-button-next').addClass("d-none")
+              }
+            })
+          }
+        },
+        loop: true,
+        zoom : true, 
+        watchOverflow: true,
+        spaceBetween: 0,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        // effect: 'flip',
+      })
+
+      $('.js-close-pCard').on('click', function(){
+        let This = this
+        $(This).closest('.pCard').fadeOut(()=>{
+          $(This).closest('.pCard').parent('[class*=col-]').remove()
+        })
+      })
+
+      $('.js-modal-heart').on('click', function(){
+        let id = $(this).closest('.pCard').attr('id')
+        $('#modal-heart').find('input[name=userId]').val( id )
+        let modal = new bootstrap.Modal( $('#modal-heart')[0] )
+        modal.show()
+      })
+
+      $('.js-modal-hangout').on('click', function(){
+        let id = $(this).closest('.pCard').attr('id')
+        $('[id*=modal-hangout-]').find('input[name=userId]').val( id )
+        let modal = new bootstrap.Modal( $('#modal-hangout-step1')[0] )
+        modal.show()
+      })
+    })
 
   </script>
 </body>
