@@ -215,6 +215,16 @@
 
 
     /*=== typesetting ===*/
+      @media( max-width: 1199.98px ){
+        .px\:xl\:0 { padding-left: 0; padding-right: 0; }
+      }
+      @media( max-width: 991.98px ){
+        .px\:lg\:0 { padding-left: 0; padding-right: 0; }
+      }
+      @media( max-width: 575.98px ){
+        .px\:sm\:0 { padding-left: 0; padding-right: 0; }
+      }
+
       .flex-center { display: flex; align-items: center; justify-content: center; }
       .flex-center-a { display: flex; align-items: center; }
       .flex-col { display: flex; flex-direction: column; }
@@ -264,6 +274,7 @@
       .lh-1\.2 { line-height: 1.2; }
       .lh-1\.8 { line-height: 1.8; }
       .lh-2 { line-height: 2; }
+      .text-more { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 
     /*=== color ===*/
@@ -273,12 +284,15 @@
 
     /*=== width ===*/
       .max-w-560 { max-width: 560px; }
+      .max-w-660 { max-width: 660px; }
 
 
     /*=== image ===*/
+      .svg20 { width: 20px; height: 20px; }
       .svg24 { width: 24px; height: 24px; }
       .img-oc { image-rendering: -webkit-optimize-contrast; }
       .img-full { background: center center no-repeat; background-size: cover; }
+
 
     /*=== location ===*/
       .loc-1 { left:0; bottom:0; }
@@ -454,7 +468,18 @@
 
 
   /*====== [Current Page] ======*/
-    /*=== #login、#about... ===*/
+    /*=== notification.html ===*/
+      .notification-table > tbody > tr > td { padding-top: 1rem; padding-bottom: 1rem; color: var(--dark) }
+      .notification-table > tbody > tr > td:nth-child(1) { width: 56px; text-align: center; }
+      .notification-table > tbody > tr > td:nth-child(1) > img { display: block; margin: auto; }
+      .notification-table > tbody > tr > td:nth-child(2) { padding-left: 0; padding-right: 0; }
+      .notification-table > tbody > tr > td:nth-child(3) { width: 56px; text-align: center; }
+      .notification-table > tbody > tr > td:nth-child(3) > .notification-dot { display: flex; margin: auto; }
+
+      .notification-dot { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; }
+      .notification-dot::after { content: ''; display: block; width: 6px; height: 6px; border-radius: 12px; background: var(--brand); }
+
+
 
 
     @media( min-width: 576px ){}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut Icon" type="image/x-icon" href="/static/common/img/logo/Logo@3x.png">
+  <title></title>
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- core -->
+  <script src="/static/core/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <link href="/static/core/bootstrap-5.1.3/css/bootstrap-custom.css" rel="stylesheet">
+  <script src="/static/core/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+
+  <!-- plugins -->
+  <link href="/static/plugins/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet">
+  <script src="/static/plugins/svg-inject-v1.2.3/svg-inject.min.js"></script>
+
+  <!-- <link href="/static/plugins/Swiper-6.8.4/swiper-bundle.min.css" rel="stylesheet">
+  <script src="/static/plugins/Swiper-6.8.4/swiper-bundle.min.js"></script> -->
+  
+  <link href="https://unpkg.com/swiper@8/swiper-bundle.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+  <!-- main -->
+  <link href="/static/common/css/main.css" rel="stylesheet">
+  <script src="/static/common/js/main.js"></script>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <script>$.get('/templates/include/header.html', (res)=>{ $('header')[0].outerHTML=res } )</script>
+    </header>
+
+    <main>
+      <div class="container px:lg:0">
+        <div class="page-header">
+          <h1 class="page-title">通知訊息</h1>
+        </div>
+        <div class="max-w-660 mx-auto">
+          <table class="table notification-table">
+            <tbody>
+              <tr>
+                <td><img src="/static/common/img/svg/invite-me.svg" alt="invite me"></td>
+                <td>
+                  <div class="ch-gy-3">
+                    <div><a class="fw-b" href="#">武東興</a> 提出邀約</div>
+                    <div></div>
+                    <div class="fs-p5 c-text1">2021/11/20 12:00:00</div>
+                  </div>
+                </td>
+                <td><i class="notification-dot"></i></td>
+              </tr>
+              <tr>
+                <td><img src="/static/common/img/svg/invite-sent.svg" alt="invite sent"></td>
+                <td>
+                  <div class="ch-gy-3">
+                    <div><a class="fw-b" href="#">動森小廚神 🐣 小菜雞</a> 已同意您的邀約</div>
+                    <div></div>
+                    <div class="fs-p5 c-text1">2021/11/20 12:00:00</div>
+                  </div>
+                </td>
+                <td><i class="notification-dot"></i></td>
+              </tr>
+              <tr>
+                <td><img src="/static/common/img/svg/invite-sent.svg" alt="invite sent"></td>
+                <td>
+                  <div class="ch-gy-3">
+                    <div><a class="fw-b" href="#">武東興</a> 已拒絕您的邀約</div>
+                    <div class="fs-p5 c-text1">2021/11/20 12:00:00</div>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><img src="/static/common/img/svg/invite-sent.svg" alt="invite sent"></td>
+                <td>
+                  <div class="ch-gy-3">
+                    <div>您對 <a class="fw-b" href="#">陳莉莉</a> 提出的邀約已過期請對方未回應</div>
+                    <div class="fs-p5 c-text1">2021/11/20 12:00:00</div>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><img src="/static/common/img/svg/Comment.svg" alt="invite sent"></td>
+                <td>
+                  <div class="ch-gy-3">
+                    <div><a class="fw-b" href="#">陳莉莉</a> 有新留言: <br>要不要出來玩</div>
+                    <div class="fs-p5 c-text1">2021/11/20 12:00:00</div>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><img src="/static/common/img/svg/heart.svg" alt="invite sent"></td>
+                <td>
+                  <div class="ch-gy-3">
+                    <div><a class="fw-b" href="#">陳莉莉</a> 送了 100 顆愛心<br></div>
+                    <div class="fs-p5 c-text1">2021/11/20 12:00:00</div>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <div id="modal">
+      <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
+    </div>
+
+    <footer>
+      <script>$.get('/templates/include/footer.html', (res)=>{ $('footer')[0].outerHTML=res } )</script>
+    </footer>
+  </div>
+  <script>
+
+  </script>
+</body>
+</html>
