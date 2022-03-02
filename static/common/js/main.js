@@ -19,7 +19,7 @@ function setWH(){
    * @param {string} url =window.location.href
    * @return {(string|string[]|{})} 回傳值
    */
-    function getUrlParam( param, url ){
+  function getUrlParam( param, url ){
     let vUrl = url || window.location.href
     let queryString = vUrl.replace(/.*\?/g,'').replace(/#.*/g,'')
     const urlSearchParams = new URLSearchParams(queryString)

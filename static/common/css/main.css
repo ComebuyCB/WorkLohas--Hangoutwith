@@ -436,13 +436,14 @@
 
 
       /*=== pCard ===*/
-        .pCard { border: solid 1px var(--border); border-radius: 1rem; overflow: hidden; }
-        .pCard-top { position: relative; }
-        .pCard-top-text { position: absolute; bottom: 0; z-index: 2; padding: 16px; width: 100%; color: white; background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%); }
-        .pCard-top-close { position: absolute; top: 0; right: 0; z-index: 2; padding: 16px; }
+        .pCard { border: solid 1px var(--border); border-radius: 1rem; overflow: hidden; transition: opacity .3s; }
+        .pCard-pic { position: relative; }
+        .pCard-pic-bot { position: absolute; bottom: 0; z-index: 2; padding: 16px; width: 100%; color: white; background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%); }
+        .pCard-pic-close { position: absolute; top: 0; right: 0; z-index: 2; padding: 16px; }
         .pCard-badge { display: flex; align-items: center; font-size: var(--h5); font-weight: bold; background-color: var(--rgba-white); color: var(--white); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 16px; user-select: none; }
         .pCard-bot { padding: 16px; }
 
+        .pCard.fadeOut { opacity: 0; }
 
 
 /*######### [Pages] #########*/
