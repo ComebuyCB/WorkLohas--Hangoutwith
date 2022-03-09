@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="shortcut Icon" type="image/x-icon" href="/static/common/img/logo/Logo@3x.png">
+  <title></title>
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- core -->
+  <script src="/static/core/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <link href="/static/core/bootstrap-5.1.3/css/bootstrap-custom.css" rel="stylesheet">
+  <script src="/static/core/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+
+  <!-- plugins -->
+  <!-- 測試機 -->
+  <script src="/static/plugins/vue-2.6.12/vue.js"></script>
+  <!-- 正式機 -->
+  <!-- <script src="/static/plugins/vue-2.6.12/vue.min.js"></script> -->
+  <!-- <script src="/static/plugins/axios-0.21.1/axios.min.js"></script> -->
+
+  <link href="/static/plugins/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet">
+  <script src="/static/plugins/svg-inject-v1.2.3/svg-inject.min.js"></script>
+
+  <!-- main -->
+  <link href="/static/common/css/main.css" rel="stylesheet">
+  <script src="/static/common/js/main.js"></script>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <script>$.get('/templates/include/header.html', (res)=>{ $('header')[0].outerHTML=res } )</script>
+    </header>
+    
+    <main id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col col-lg-3 d-none d-lg-block">
+            <div class="user-sideNav">
+              <a class="btn active" href="/templates/user/memberView.html">會員專區</a>
+              <a class="btn" href="/templates/user/inviteFriends.html">邀請好友加入</a>
+              <a class="btn" href="/templates/user/settings.html">個人資訊</a>
+              <a class="btn" href="/templates/user/hobbySetting.html">興趣偏好設定</a>
+              <a class="btn" href="/templates/user/withdrawal.html">提領資訊</a>
+              <a class="btn" href="/templates/user/customerService.html">客服中心</a>
+              <a class="btn" href="">隱私權政策</a>
+              <a class="btn" href="">會員使用條款</a>
+              <a class="btn c-brand" href="">登出</a>
+            </div>
+          </div>
+          <div class="col col-lg-9">
+            <div class="max-w-660 mx-auto">
+              <div class="page-header">
+                <a class="btn btn-white btn-round page-prev" href="/templates/user/memberView.html"></a>
+                <h1 class="page-title">升級或加購</h1>
+              </div>
+              <div class="text-center">
+                <img class="mb-5 img-oc w-100" src="/static/common/img/img-upgrade.png" style="max-width: 330px">
+                <div class="mb-4">解鎖<b>高級會員</b>所有特色功能獲得完整體驗</div>
+                <button class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#modal-step1">立刻升級 每月NT$300</button>
+              </div>
+              <div class="mt-5">
+                <div class="row row-cols-1 row-cols-lg-3 g-3">
+                  <div class="col">
+                    <div class="box img-full text-white bg-dark" style="background-image: url(/static/common/img/bg-upgrade1.png)">
+                      <img class="mb-2" src="/static/common/img/svg/premium.svg" alt="premium" onload="SVGInject(this)">
+                      <div class="mb-2 fs-h3 pb-1">高級會員</div>
+                      <div class="ch-gy-3 mb-4">
+                        <div class="fs-label img-text"><img class="svg20" src="/static/common/img/svg/Checkmark.svg" onload="SVGInject(this)">每月額度 100000</div>
+                        <div class="fs-label img-text"><img class="svg20" src="/static/common/img/svg/Checkmark.svg" onload="SVGInject(this)">贈送愛心數 3000</div>
+                        <div class="fs-label img-text"><img class="svg20" src="/static/common/img/svg/Checkmark.svg" onload="SVGInject(this)">優先排序邀約單</div>
+                        <div class="fs-label img-text"><img class="svg20" src="/static/common/img/svg/Checkmark.svg" onload="SVGInject(this)">檢視已送愛心的對象</div>
+                      </div>
+                      <button class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#modal-step1">立刻升級</button>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="box img-full" style="background-image: url(/static/common/img/bg-upgrade2.png)">
+                      <img class="mb-2" src="/static/common/img/svg/normal.svg" alt="normal">
+                      <div class="mb-2 fs-h3 pb-1">一般會員</div>
+                      <div class="ch-gy-3 mb-4">
+                        <div class="fs-label img-text"><img class="svg20" src="/static/common/img/svg/Checkmark.svg" onload="SVGInject(this)">每月額度 30000</div>
+                        <div class="fs-label img-text"><img class="svg20" src="/static/common/img/svg/Checkmark.svg" onload="SVGInject(this)">贈送愛心數 1000</div>
+                        <div class="fs-label img-text c-textx"><img class="svg20" src="/static/common/img/svg/Dismiss.svg" onload="SVGInject(this)">優先排序邀約單</div>
+                        <div class="fs-label img-text c-textx"><img class="svg20" src="/static/common/img/svg/Dismiss.svg" onload="SVGInject(this)">檢視已送愛心的對象</div>
+                      </div>
+                      <button class="btn btn-brand-ol" data-bs-toggle="modal" data-bs-target="#modal-step1">立刻升級</button>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="box">
+                      <img class="mb-2" src="/static/common/img/svg/free.svg" alt="free">
+                      <div class="mb-2 fs-h3 pb-1">免費</div>
+                      <div class="ch-gy-3 mb-4">
+                        <div class="fs-label img-text"><img class="svg20" src="/static/common/img/svg/Checkmark.svg" onload="SVGInject(this)">每月額度 5000</div>
+                        <div class="fs-label img-text"><img class="svg20" src="/static/common/img/svg/Checkmark.svg" onload="SVGInject(this)">每日20 (連續發放10日)</div>
+                        <div class="fs-label img-text c-textx"><img class="svg20" src="/static/common/img/svg/Dismiss.svg" onload="SVGInject(this)">優先排序邀約單</div>
+                        <div class="fs-label img-text c-textx"><img class="svg20" src="/static/common/img/svg/Dismiss.svg" onload="SVGInject(this)">檢視已送愛心的對象</div>
+                      </div>
+                      <button class="btn btn-brand-ol" disabled>目前計畫</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal modal-bot fade" id="modal-step1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="page-header">
+                <h2 class="page-title">請選擇購買項目</h2>
+                <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div>
+                <div class="form-body">
+                  <div class="ch-gy-3">
+                    <label v-for="(val, key) in step2" class="ckb ckbBox ckb100">
+                      <input type="radio" name="buyType" :value="key" v-model="userSelected.buyType">
+                      <div>{{val.title}}</div>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-foot">
+                  <button id="nextStep" type="button" class="btn btn-brand" :disabled="userSelected.buyType === ''" data-bs-toggle="modal" data-bs-target="#modal-step2">下一步</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal modal-bot fade" id="modal-step2" data-bs-backdrop="static" v-if="userSelected.buyType">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="page-header">
+                <button type="button" class="btn btn-white btn-round page-prev" data-bs-toggle="modal" data-bs-target="#modal-step1" @click="clearUserSelected()"></button>
+                <h2 class="page-title">{{ step2[userSelected.buyType].title }}</h2>
+                <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal" @click="clearUserSelected()"></button>
+              </div>
+              <div>
+                <div class="form-body">
+                  <div class="form-group">
+                    <div class="form-label">{{ step2[userSelected.buyType].chooseTitle }}</div>
+                    <div class="ch-gy-3">
+                      <label class="ckb ckbBox ckb100" v-for="item in step2[userSelected.buyType].chooseType">
+                        <input type="radio" name="chooseType" :value="item.value" v-model="userSelected.chooseType">
+                        <div>
+                          <div>
+                            <div>{{item.title}}</div>
+                            <div class="desc">{{item.desc}}</div>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-label">{{ step2[userSelected.buyType].payTitle }}</div>
+                    <div class="ch-gy-3">
+                      <label class="ckb ckbBox ckb100" v-for="item in step2[userSelected.buyType].payType">
+                        <input type="radio" name="payType" :value="item.value" v-model="userSelected.payType">
+                        <div>
+                          <div>
+                            <div>{{item.title}}</div>
+                            <div class="desc">{{item.desc}}</div>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-foot">
+                  <button type="button" class="btn btn-brand" :disabled="userSelected.chooseType === '' || userSelected.payType=== ''" @click="modal_submit">確認購買</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <div id="modal">
+      <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
+    </div>
+
+    <footer>
+      <script>$.get('/templates/include/footer.html', (res)=>{ $('footer')[0].outerHTML=res } )</script>
+    </footer>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#main',
+      data: {
+        step2: {
+          member: {
+            title: '升級會員',
+            chooseTitle: '選擇會員',
+            chooseType: [
+              { title: '一般會員', desc: '每月NT$ 100元，每月額度30,000', value: 'normal' },
+              { title: '高級會員', desc: '每月NT$ 300元，每月額度100,000', value: 'premium' }
+            ],
+            payTitle: '選擇支付方式',
+            payType: [
+              { title: '信用卡支付', desc: '每月定期繳費，可隨時至會員專區取消', value: 'credit' },
+            ],
+          },
+          amount: {
+            title: '加購額度',
+            chooseTitle: '選擇額度 (購買完成一個月內)',
+            chooseType: [
+              { title: 'NT$ 100元', desc: '可增加額度至30,000', value: '100' },
+              { title: 'NT$ 300元', desc: '可增加額度至30,000', value: '300' }
+            ],
+            payTitle: '選擇支付方式',
+            payType: [
+              { title: 'Apply Pay', desc: null, value: 'applyPay' },
+              { title: 'Google PAY', desc: null, value: 'googlePay' },
+              { title: '信用卡支付', desc: null, value: 'credit' },
+            ],
+          },
+          heart: {
+            title: '加購愛心',
+            chooseTitle: '選擇顆數',
+            chooseType: [
+              { title: 'NT$ 100元', desc: '可增加愛心1000顆', value: '100' },
+              { title: 'NT$ 300元', desc: '可增加愛心3000顆', value: '300' }
+            ],
+            payTitle: '選擇支付方式',
+            payType: [
+              { title: 'Apply Pay', desc: null, value: 'applyPay' },
+              { title: 'Google PAY', desc: null, value: 'googlePay' },
+              { title: '信用卡支付', desc: null, value: 'credit' },
+            ],
+          },
+        },
+
+        userSelected: {
+          buyType: '',
+          chooseType: '',
+          payType: '',
+        }
+      },
+      methods: {
+        clearUserSelected(){
+          this.userSelected.chooseType = ''
+          this.userSelected.payType = ''
+        },
+        modal_submit(){
+          let postData = JSON.parse(JSON.stringify( this.userSelected ))
+          console.log( postData )
+        }
+      },
+    })
+
+  </script>
+</body>
+</html>

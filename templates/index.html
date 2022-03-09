@@ -40,8 +40,8 @@
     <main id="main">
       <div class="container">
         <div class="mb-3 text-end">
-          <button class="btn btn-brand-ol iconText w-auto" data-bs-toggle="modal" data-bs-target="#modal-hobby">
-            <img src="/static/common/img/svg/Settings.svg" onload="SVGInject(this)"> 興趣偏好 {{hobbySetting.hobby}}
+          <button class="btn btn-brand-ol img-text w-auto" data-bs-toggle="modal" data-bs-target="#modal-hobby">
+            <img src="/static/common/img/svg/Settings.svg" onload="SVGInject(this)"> 興趣偏好
           </button>
         </div>
         <div class="row g-3">
@@ -75,9 +75,9 @@
                         </div>
                       </div>
                       <div class="fs-h3 text-more">{{item.name}}</div>
-                      <div class="fs-h5 flex-center-a ch-gx-3">
-                        <div class="flex-iconText"><img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span>{{item.age}}，{{item.county}}</span></div>
-                        <div class="flex-iconText"><img src="/static/common/img/svg/heart.svg" class="svg20" onload="SVGInject(this)"><span>{{item.heart}}</span></div>
+                      <div class="fs-label flex-center-a ch-gx-3">
+                        <div class="img-text"><img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span>{{item.age}}，{{item.county}}</span></div>
+                        <div class="img-text"><img src="/static/common/img/svg/heart.svg" class="svg20" onload="SVGInject(this)"><span>{{item.heart}}</span></div>
                       </div>
                     </div>
                   </div>
@@ -85,7 +85,7 @@
 
                 <div class="pCard-bot">
                   <div class="d-flex justify-content-between">
-                    <button class="btn btn-brand w-auto" @click="openModal_hangout(item)">
+                    <button class="btn btn-brand w-auto" @click="openModal_hangout1(item)">
                       <img class="me-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)">Lets Hangout
                     </button>
                     <button class="btn btn-brand-ol btn-round" @click="openModal_heart(item)">
@@ -133,7 +133,7 @@
                     <label class="ckb ckbBox ckbHide">
                       <input type="checkbox" v-model="hobbySetting.hobby" value="Coffee Chat">
                       <div>
-                        <div class="flex-iconText">
+                        <div class="img-text">
                           <img src="/static/common/img/svg/coffee.svg"> Coffee Chat
                         </div>
                       </div>
@@ -141,7 +141,7 @@
                     <label class="ckb ckbBox ckbHide">
                       <input type="checkbox" v-model="hobbySetting.hobby" value="Outdoor activity">
                       <div>
-                        <div class="flex-iconText">
+                        <div class="img-text">
                           <img src="/static/common/img/svg/tree.svg"> Outdoor activity
                         </div>
                       </div>
@@ -149,7 +149,7 @@
                     <label class="ckb ckbBox ckbHide">
                       <input type="checkbox" v-model="hobbySetting.hobby" value="Movie Time">
                       <div>
-                        <div class="flex-iconText">
+                        <div class="img-text">
                           <img src="/static/common/img/svg/movie.svg"> Movie Time
                         </div>
                       </div>
@@ -157,7 +157,7 @@
                     <label class="ckb ckbBox ckbHide">
                       <input type="checkbox" v-model="hobbySetting.hobby" value="KTV Super Idol">
                       <div>
-                        <div class="flex-iconText">
+                        <div class="img-text">
                           <img src="/static/common/img/svg/microphone.svg"> KTV Super Idol
                         </div>
                       </div>
@@ -165,7 +165,7 @@
                     <label class="ckb ckbBox ckbHide">
                       <input type="checkbox" v-model="hobbySetting.hobby" value="Foodie">
                       <div>
-                        <div class="flex-iconText">
+                        <div class="img-text">
                           <img src="/static/common/img/svg/foodie.svg"> Foodie
                         </div>
                       </div>
@@ -173,7 +173,7 @@
                     <label class="ckb ckbBox ckbHide">
                       <input type="checkbox" v-model="hobbySetting.hobby" value="Concert">
                       <div>
-                        <div class="flex-iconText">
+                        <div class="img-text">
                           <img src="/static/common/img/svg/concert.svg"> Concert
                         </div>
                       </div>
@@ -216,7 +216,7 @@
                   <div class="form-section" v-if="modal.heart.amount >= 100">
                     <div class="form-group">
                       <label class="form-label">留言</label>
-                      <textarea class="form-control" rows="5" placeholder="分享自我介紹訊息增加興趣交流的機會"></textarea>
+                      <textarea class="form-control" rows="5" placeholder="分享自我介紹訊息增加興趣交流的機會" v-model="modal.heart.message"></textarea>
                       <div class="form-desc">留言時請遵守留言規則。</div>
                     </div>
                   </div>
@@ -247,7 +247,7 @@
                       <label class="ckb ckbBox ckbHide">
                         <input type="radio" v-model="modal.hangout.hobby" value="Coffee Chat">
                         <div>
-                          <div class="flex-iconText">
+                          <div class="img-text">
                             <img src="/static/common/img/svg/coffee.svg"> Coffee Chat
                           </div>
                         </div>
@@ -255,7 +255,7 @@
                       <label class="ckb ckbBox ckbHide">
                         <input type="radio" v-model="modal.hangout.hobby" value="Outdoor activity">
                         <div>
-                          <div class="flex-iconText">
+                          <div class="img-text">
                             <img src="/static/common/img/svg/tree.svg"> Outdoor activity
                           </div>
                         </div>
@@ -263,7 +263,7 @@
                       <label class="ckb ckbBox ckbHide">
                         <input type="radio" v-model="modal.hangout.hobby" value="Movie Time">
                         <div>
-                          <div class="flex-iconText">
+                          <div class="img-text">
                             <img src="/static/common/img/svg/movie.svg"> Movie Time
                           </div>
                         </div>
@@ -271,7 +271,7 @@
                       <label class="ckb ckbBox ckbHide">
                         <input type="radio" v-model="modal.hangout.hobby" value="KTV Super Idol">
                         <div>
-                          <div class="flex-iconText">
+                          <div class="img-text">
                             <img src="/static/common/img/svg/microphone.svg"> KTV Super Idol
                           </div>
                         </div>
@@ -279,7 +279,7 @@
                       <label class="ckb ckbBox ckbHide">
                         <input type="radio" v-model="modal.hangout.hobby" value="Foodie">
                         <div>
-                          <div class="flex-iconText">
+                          <div class="img-text">
                             <img src="/static/common/img/svg/foodie.svg"> Foodie
                           </div>
                         </div>
@@ -287,7 +287,7 @@
                       <label class="ckb ckbBox ckbHide">
                         <input type="radio" v-model="modal.hangout.hobby" value="Concert">
                         <div>
-                          <div class="flex-iconText">
+                          <div class="img-text">
                             <img src="/static/common/img/svg/concert.svg"> Concert
                           </div>
                         </div>
@@ -296,7 +296,7 @@
                   </div>
                 </div>
                 <div class="form-foot">
-                  <button type="button" class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#modal-hangout-step2">下一步</button>
+                  <button type="button" class="btn btn-brand" @click="openModal_hangout2()" :disabled="modal.hangout.hobby === ''">下一步</button>
                 </div>
               </div>
             </div>
@@ -309,7 +309,7 @@
           <div class="modal-content">
             <div class="modal-body">
               <div class="page-header">
-                <button type="button" class="btn btn-white btn-round page-prev" data-bs-toggle="modal" data-bs-target="#modal-hangout-step1"></button>
+                <button type="button" class="btn btn-white btn-round page-prev" @click="openModal_hangout1()"></button>
                 <h2 class="page-title">邀約表單</h2>
                 <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal" @click="initHangout()"></button>
               </div>
@@ -320,7 +320,7 @@
                     <label class="form-label">想約什麼時候呢？</label>
                     <div class="flex-center-a">
                       <input type="date" v-model="modal.hangout.date" class="form-control">
-                      <div class="px-2">至</div>
+                      <div class="px-3">至</div>
                       <div class="text-nowrap">2022/1/3</div>
                     </div>
                     <div class="form-desc c-text1">每次邀約以設定日期後3天為一個期間，邀約開始日期最常不可超過14天。</div>
@@ -340,7 +340,7 @@
                   </div>
                 </div>
                 <div class="form-foot">
-                  <button type="button" class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#modal-hangout-step3">下一步</button>
+                  <button type="button" class="btn btn-brand" @click="openModal_hangout3()" :disabled="modal.hangout.date === '' || modal.hangout.payType === ''">下一步</button>
                 </div>
               </div>
             </div>
@@ -353,7 +353,7 @@
           <div class="modal-content">
             <div class="modal-body">
               <div class="page-header">
-                <button type="button" class="btn btn-white btn-round page-prev" data-bs-toggle="modal" data-bs-target="#modal-hangout-step2"></button>
+                <button type="button" class="btn btn-white btn-round page-prev" @click="openModal_hangout2()"></button>
                 <h2 class="page-title">邀約表單</h2>
                 <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal" @click="initHangout()"></button>
               </div>
@@ -406,7 +406,7 @@
         modal: {
           hangout: {
             id: '',
-            hobby: [],
+            hobby: '',
             date: '',
             payType: '',
             allowance: 0,
@@ -416,11 +416,11 @@
             id: '',
             amount: 0,
             message: 0,
-            isOver100: false,
           }
         },
         bsModal_heart: null,
         bsModal_hangout_step1: null,
+        bsModal_hangout_step2: null,
         bsModal_hangout_step3: null,
       },
       mounted() {
@@ -428,10 +428,12 @@
 
         This.bsModal_heart = new bootstrap.Modal( document.getElementById('modal-heart') ),
         This.bsModal_hangout_step1 = new bootstrap.Modal( document.getElementById('modal-hangout-step1') ),
+        This.bsModal_hangout_step2 = new bootstrap.Modal( document.getElementById('modal-hangout-step2') ),
         This.bsModal_hangout_step3 = new bootstrap.Modal( document.getElementById('modal-hangout-step3') ),
 
         This.ajaxNewList()
 
+        // 往下滑列出新的data
         $(window).on('scroll', ()=>{
           if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10 ) {
             This.ajaxNewList()
@@ -455,14 +457,14 @@
           this.modal.heart = {
             id: '',
             amount: 0,
-            message: 0,
+            message: '',
             isOver100: false,
           }
         },
         initHangout( item ){
           this.modal.hangout = {
             id: '',
-            hobby: [],
+            hobby: '',
             date: '',
             payType: '',
             allowance: 0,
@@ -559,22 +561,47 @@
           this.modal.heart.id = item.id
           this.bsModal_heart.show()
         },
-        openModal_hangout( item ){
-          this.modal.hangout.id = item.id
-          this.bsModal_hangout_step1.show()
+        openModal_hangout1( item ){
+          if ( item ){
+            this.modal.hangout.id = item.id
+          }
+
+          this.bsModal_hangout_step2.hide()
+          setTimeout(()=>{
+            this.bsModal_hangout_step1.show()
+          })
+        },
+        openModal_hangout2(){
+          this.bsModal_hangout_step1.hide()
+          this.bsModal_hangout_step3.hide()
+          setTimeout(()=>{
+            this.bsModal_hangout_step2.show()
+          })
+        },
+        openModal_hangout3(){
+          this.bsModal_hangout_step2.hide()
+          setTimeout(()=>{
+            this.bsModal_hangout_step3.show()
+          })
         },
         submitModal_heart(){
           let sendData = JSON.parse(JSON.stringify(this.modal.heart))
+          let This = this
           $.get('/',()=>{
             console.log( sendData )
-            this.bsModal_heart.hide()
+
+            This.initHeart()
+            This.bsModal_heart.hide()
           })
         },
         submitModal_hangout(){
           let sendData = JSON.parse(JSON.stringify(this.modal.hangout))
+          let This = this
           $.get('/',()=>{
             console.log( sendData )
-            this.bsModal_hangout_step3.hide()
+
+            This.initHangout()
+            This.bsModal_hangout_step3.hide()
           })
         }
       }
