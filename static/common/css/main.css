@@ -87,7 +87,6 @@
     input::placeholder { color: var(--text-2); }
     select > option:disabled { color: var(--text-2); }
 
-
 /*######### [Plugins] #########*/
   /*====== [Plugins Modified] ======*/
     /*=== Bootstrap ===*/
@@ -102,24 +101,25 @@
         .form-control, .form-select { min-height: 46px; padding: 10px 16px; border-color: var(--border); border-radius: 8px; }
         .form-control::placeholder, .form-select::placeholder { color: var(--text-2); }
         .form-control:focus, .form-select:focus { box-shadow: none; border-color: var(--dark); }
+        .form-select { background-image: url(../img/svg/Caret-down.svg); background-size: 20px 20px; }
+        .form-select::-webkit-calendar-picker-indicator { display: none !important; }
 
-
+        
+      /* modal */
         /* .modal .page-header{ padding: 16px; } */
         .modal-backdrop.show + .modal-backdrop.show { opacity: 0; }
         /* .modal-backdrop:not(.show) + .modal-backdrop.show { opacity: 0.5; } */
-        
-        
-      /* modal-page */
+        .modal-content { border-radius: 1rem; }
+
+        /* modal-page */
         @media ( max-width: 991.98px){
           .modal.modal-page { top: var(--header-height); height: calc( var(--wh) - var(--header-height) - var(--footer-height) ); }
           .modal.modal-page .modal-dialog { margin: auto; max-width: 540px; height: calc( var(--wh) - var(--header-height) - var(--footer-height) ); overflow: auto; }
           .modal.modal-page.fade .modal-dialog { transform: translate(100%, 0); }
           .modal.modal-page.show .modal-dialog { transform: none; }
-
           .modal.modal-page.modal-static .modal-dialog { transform: none; }
           .modal.modal-page .modal-content { border: 0; border-radius: 0; }
           .modal.modal-page .modal-body { height: var(--wh); }
-
           .modal-page-backdrop { display: none !important; }
           /* .modal.modal-page.fade { transition: none; } */
         }
@@ -127,19 +127,18 @@
           .modal.modal-page .modal-dialog { max-width: 576px; }
         }
 
-
-      /* modal-bot */
+        /* modal-bot */
         @media ( max-width: 991.98px){
           .modal.modal-bot .modal-dialog { margin: auto; padding-top: var(--header-height); max-width: 540px; overflow: auto; display: flex; align-items: flex-end; min-height: 100%; height: 100%; }
           .modal.modal-bot.fade .modal-dialog { transform: translate(0, 50%); }
           .modal.modal-bot.show .modal-dialog { transform: none; }
           .modal.modal-bot.show.modal-static .modal-dialog { transform: scale(1.02); }
-
           .modal.modal-bot .modal-content { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
-
-          .modal-page-backdrop { display: none !important; }
-          /* .modal.modal-page.fade { transition: none; } */
         }
+
+      /* nav-tab */
+      .nav-tabs .nav-link { color: var(--text-2); font-weight: bold; padding: 0 0 8px 0; margin: 0 24px 0 0; border-style: solid; border-width: 0 0 2px; border-color: transparent; }
+      .nav-tabs .nav-link.active { color: var(--brand); border-color: transparent transparent var(--brand); }
 
 
     /*=== swiper ===*/
@@ -303,11 +302,12 @@
 
     /*=== color ===*/
       .bg-dark { background-color: var(--dark) !important; }
-      .c-brand { color: var(--brand) }
-      .c-success { color: var(--success); }
-      .c-text1 { color: var(--text-1) }
-      .c-text2 { color: var(--text-2) }
-      .c-textx { color: var(--text-x) }
+      .c-brand { color: var(--brand) !important; }
+      .c-danger { color: var(--danger) !important; }
+      .c-success { color: var(--success) !important; }
+      .c-text1 { color: var(--text-1) !important; }
+      .c-text2 { color: var(--text-2) !important; }
+      .c-textx { color: var(--text-x) !important; }
 
 
     /*=== width ===*/
@@ -326,6 +326,9 @@
         .w-xl-0 { width: 0 !important;}
         .w-xl-100 { width: 100% !important;}
       }
+      .max-w-95 { max-width: 95px; }
+      .max-w-120 { max-width: 120px; }
+      .max-w-160 { max-width: 160px; }
       .max-w-560 { max-width: 560px; }
       .max-w-660 { max-width: 660px; }
 
@@ -449,7 +452,7 @@
 
       .ckb.ckb100 { display: flex; }
       .ckb.ckb100  > input + * { display: flex; width: 100%; }
-
+      .ckb.ckb100  > input + * > * { width: 100%; }
 
     /*====== [Templates] ======*/
       /*=== form ===*/
@@ -481,9 +484,6 @@
         }
 
 
-      /*=== modal ===*/
-        .modal-content { border-radius: 1rem; }
-
 
       /*=== pCard ===*/
         .pCard { border: solid 1px var(--border); border-radius: 1rem; overflow: hidden; transition: opacity .3s; }
@@ -492,8 +492,23 @@
         .pCard-pic-close { position: absolute; top: 0; right: 0; z-index: 2; padding: 16px; }
         .pCard-badge { display: flex; align-items: center; font-size: var(--h5); font-weight: bold; background-color: var(--rgba-white); color: var(--white); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 16px; user-select: none; }
         .pCard-bot { padding: 16px; }
-
         .pCard.fadeOut { opacity: 0; }
+
+
+      /*=== custom-table ===*/
+        .custom-table { width: 100%; }
+        .custom-table > thead > tr > th,
+        .custom-table > tbody > tr > td::before { font-size: 14px; color: var(--text-1); padding: 8px; font-weight: bold; }
+        .custom-table > tbody > tr > td { font-size: 16px; color: var(--dark); padding: 8px; }
+        .custom-table > tbody > tr:nth-child(odd) { background-color: var(--background); }
+
+        @media( max-width: 991.98px ){
+          .custom-table > thead { display: none; }
+          .custom-table > tbody > tr { display: block; padding: 8px; }
+          .custom-table > tbody > tr > td { display: flex; justify-content: space-between; padding: 8px; text-align: right; }
+          .custom-table > tbody > tr > td::before { content: attr(data_th); display: block; padding: 2px 16px 0 0; text-align: left; white-space: nowrap; }
+        }
+
 
 
 
@@ -553,7 +568,7 @@
         .user-sideNav > .btn.c-brand::after { display: none; }
       }
       @media( min-width: 992px ){
-        .user-sideNav { position: sticky; top: 100px; }
+        .user-sideNav { position: sticky; top: 102px; }
         .user-sideNav > .btn { width: 100%; font-weight: 400; justify-content: flex-start; }
         .user-sideNav > .btn:hover,
         .user-sideNav > .btn.active { color: white !important; background-color: var(--brand) !important; }

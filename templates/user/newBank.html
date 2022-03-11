@@ -56,28 +56,39 @@
           <div class="col-12 col-lg-9">
             <div class="max-w-660 mx-auto flex-col">
               <div class="page-header">
-                <a class="btn btn-white btn-round page-prev" href="/templates/user/personalInfo.html"></a>
-                <h1 class="page-title">Email</h1>
+                <a class="btn btn-white btn-round page-prev" href="javascript: history.back()"></a>
+                <h1 class="page-title">新增銀行</h1>
               </div>
-              <div class="mb-5">請輸入你的密碼。我們會寄一封郵件給你，以確認新的電子郵件地址。</div>
               <form>
                 <div class="form-body">
                   <div class="form-group">
-                    <div class="form-label">Email</div>
-                    <input type="email" class="form-control">
+                    <div class="form-label">銀行名稱</div>
+                    <input type="text" class="form-select" list="banks">
+                    <datalist id="banks">
+                      <option value="004 台灣銀行">
+                      <option value="005 土地銀行">
+                    </datalist>
                   </div>
                   <div class="form-group">
-                    <div class="form-label">輸入密碼</div>
-                    <div class="js-input-eye">
-                      <input class="form-control" type="password">
-                      <button class="js-eye btn btn-round" type="button"></button>
-                    </div>
+                    <div class="form-label">銀行帳戶戶名</div>
+                    <input type="text" class="form-control">
+                    <div class="form-desc">請務必與開戶時填寫姓名相同</div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-label">銀行帳號</div>
+                    <input type="text" class="form-control">
+                    <div class="form-desc">請勿輸入連結號或空號</div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-label">分行代碼</div>
+                    <input type="text" class="form-control">
                   </div>
                 </div>
                 <div class="form-foot">
                   <button class="btn btn-brand">儲存</button>
                 </div>
               </form>
+
             </div>
           </div>
         </div>

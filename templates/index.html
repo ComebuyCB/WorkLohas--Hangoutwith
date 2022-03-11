@@ -99,13 +99,13 @@
         </div>
       </div>
 
-      <div class="modal fade" id="modal-hobby">
+      <div class="modal fade" id="modal-hobby" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-body">
               <div class="page-header">
                 <h2 class="page-title">興趣偏好設定</h2>
-                <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal" @click="default_hobby()"></button>
               </div>
               <div class="form-body">
                 <div class="form-group">透過興趣認識新朋友，交流分享生活點滴，立刻挑選興趣看誰願意和你來一個知性的交流。</div>
@@ -398,13 +398,13 @@
     new Vue({
       el: '#main',
       data: {
-        hobbySetting: {
+        ori_hobbySetting: {
           partner: ['女'],
           hobby: ['Coffee Chat', 'Concert']
         },
         hobbySetting: {
-          partner: ['女'],
-          hobby: ['Coffee Chat', 'Concert']
+          partner: [],
+          hobby: [],
         },
         fetching: false,
         api: {
@@ -436,6 +436,8 @@
       },
       mounted() {
         let This = this
+
+        This.default_hobby()
 
         This.bsModal_hobby = new bootstrap.Modal( document.getElementById('modal-hobby') ),
         This.bsModal_heart = new bootstrap.Modal( document.getElementById('modal-heart') ),
@@ -561,6 +563,9 @@
               This.fetching = false
             })
           }
+        },
+        default_hobby(){
+          this.hobbySetting = { ...this.ori_hobbySetting }
         },
         addHeart( num ){
           this.modal.heart.amount += ( this.modal.heart.amount + num >= 0 ) ? num : 0

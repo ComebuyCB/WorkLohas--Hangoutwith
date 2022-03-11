@@ -44,9 +44,9 @@
             <div class="user-sideNav">
               <a class="btn d-none d-lg-flex" href="/templates/user/memberView.html">會員專區</a>
               <a class="btn" href="/templates/user/inviteFriends.html">邀請好友加入</a>
-              <a class="btn active" href="/templates/user/personalInfo.html">個人資訊</a>
+              <a class="btn" href="/templates/user/personalInfo.html">個人資訊</a>
               <a class="btn" href="/templates/user/hobbySetting.html">興趣偏好設定</a>
-              <a class="btn" href="/templates/user/withdrawal.html">提領資訊</a>
+              <a class="btn active" href="/templates/user/withdrawal.html">提領資訊</a>
               <a class="btn" href="/templates/user/customerService.html">客服中心</a>
               <a class="btn" href="">隱私權政策</a>
               <a class="btn" href="">會員使用條款</a>
@@ -56,28 +56,57 @@
           <div class="col-12 col-lg-9">
             <div class="max-w-660 mx-auto flex-col">
               <div class="page-header">
-                <a class="btn btn-white btn-round page-prev" href="/templates/user/personalInfo.html"></a>
-                <h1 class="page-title">Email</h1>
+                <a class="btn btn-white btn-round page-prev" href="/templates/user/withdrawal.html"></a>
+                <h1 class="page-title">申請提領</h1>
               </div>
-              <div class="mb-5">請輸入你的密碼。我們會寄一封郵件給你，以確認新的電子郵件地址。</div>
-              <form>
-                <div class="form-body">
-                  <div class="form-group">
-                    <div class="form-label">Email</div>
-                    <input type="email" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <div class="form-label">輸入密碼</div>
-                    <div class="js-input-eye">
-                      <input class="form-control" type="password">
-                      <button class="js-eye btn btn-round" type="button"></button>
-                    </div>
+
+              <div class="box mb-5">
+                <div class="form-group">
+                  <div class="form-label">可提領金額</div>
+                  <div class="fs-h1">NT$ 4970</div>
+                </div>
+              </div>
+
+              <div class="form-body">
+                <div class="form-group">
+                  <div class="form-label">選擇銀行</div>
+                  <div class="ch-gy-3">
+                    <label class="ckb ckbBox ckb100 ckbHide">
+                      <input type="radio" name="chooseBank">
+                      <div class="p-3">
+                        <div class="fw-n">
+                          <div class="d-flex justify-content-between w-100">
+                            <div>
+                              822 中國信託<br>
+                              黃**<br>
+                              *******************1234
+                            </div>
+                            <div class="text-end">
+                              <div class="form-label" onclick="alert('delete')"><img src="/static/common/img/svg/Delete.svg"></div>
+                              <div class="c-success">已驗證</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </label>
+                    <a type="button" class="btn btn-brand-ol" href="/templates/user/newBank.html">新增銀行</a>
                   </div>
                 </div>
-                <div class="form-foot">
-                  <button class="btn btn-brand">儲存</button>
+
+                <div class="form-group">
+                  <div class="form-label">提領金額 NT$</div>
+                  <input type="number" class="form-control">
+                  <div class="form-desc">提領金額最少NT$1000，衍生之轉帳手續費將從提領金額中扣除。</div>
                 </div>
-              </form>
+              </div>
+
+              <div class="form-foot">
+                <div class="text-end">
+                  <button class="btn btn-brand">確認送出</button>
+                  <div class="form-desc">我們將確認後，進行金額發放。</div>
+                </div>
+              </div>
+            
             </div>
           </div>
         </div>
