@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="shortcut Icon" type="image/x-icon" href="/static/common/img/logo/Logo@3x.png">
+  <title></title>
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- core -->
+  <script src="/static/core/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <link href="/static/core/bootstrap-5.1.3/css/bootstrap-custom.css" rel="stylesheet">
+  <script src="/static/core/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+
+  <!-- plugins -->
+  <!-- 測試機 -->
+  <script src="/static/plugins/vue-2.6.12/vue.js"></script>
+  <!-- 正式機 -->
+  <!-- <script src="/static/plugins/vue-2.6.12/vue.min.js"></script> -->
+  <!-- <script src="/static/plugins/axios-0.21.1/axios.min.js"></script> -->
+
+  <link href="/static/plugins/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet">
+  <script src="/static/plugins/svg-inject-v1.2.3/svg-inject.min.js"></script>
+
+  <link href="/static/plugins/Swiper-8.0.6/swiper-bundle.min.css" rel="stylesheet"/>
+  <script src="/static/plugins/Swiper-8.0.6/swiper-bundle.min.js"></script>
+
+  <!-- main -->
+  <link href="/static/common/css/main.css" rel="stylesheet">
+  <script src="/static/common/js/main.js"></script>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <script>$.get('/templates/include/header.html', (res)=>{ $('header')[0].outerHTML=res } )</script>
+    </header>
+    
+    <main>
+      <div class="container">
+        <nav>
+          <div class="nav nav-tabs">
+            <a class="nav-link active" href="/templates/inviteMe.html">邀約我的</a>
+            <a class="nav-link" href="/templates/meInvite.html">我邀約的</a>
+          </div>
+        </nav>
+
+        <nav class="container-nav-scroll-x mt-3 mt-lg-5">
+          <div class="nav nav-pills flex-nowrap">
+            <a class="nav-link active" href="/templates/">邀約訊息</a>
+            <a class="nav-link" href="/templates/">已成立</a>
+            <a class="nav-link" href="/templates/">已核銷</a>
+            <a class="nav-link" href="/templates/">不成立</a>
+          </div>
+        </nav>
+
+        <div class="ch-gy-5 mt-5">
+          <div class="ch-gy-3">
+            <div class="flex-center-a">
+              <div class="me-3">
+                <div class="avatar avatar-white avatar-sm" style="background-image: url(/static/common/img/avatar/4.jpg)"></div>
+              </div>
+              <div class="d-flex flex-column">
+                <div><b>動森小廚神 🐣 小菜雞</b> 提出邀約</div>
+                <div>自由業 • 請客</div>
+              </div>
+              <div class="ms-auto">
+                <button class="btn btn-brand-ol btn-round">
+                  <img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)">
+                </button>
+              </div>
+            </div>
+
+            <div class="box ch-gy-3">
+              <div class="c-danger img-text a-link"><img src="/static/common/img/svg/Warning.svg" onload="SVGInject(this)">邀約時間重複，請擇一同意</div>
+              <div class="ch-gy-2">
+                <div><b class="fs-label c-text1 me-3">日期</b> 2021/11/20~2021/11/23</div>
+                <div><b class="fs-label c-text1 me-3">津貼NT$</b> 2000</div>
+              </div>
+              <div class="d-flex ch-gx-3">
+                <button class="btn btn-white">拒絕</button>
+              </div>
+            </div>
+
+            <div>2021/11/20 12:00:00</div>
+            <hr>
+          </div>
+
+
+          <div class="ch-gy-3">
+            <div class="flex-center-a">
+              <div class="me-3">
+                <div class="avatar avatar-white avatar-sm" style=""></div>
+              </div>
+              <div class="d-flex flex-column">
+                <div><b>動森小廚神 🐣 小菜雞</b> 提出邀約</div>
+                <div>自由業 • 請客</div>
+              </div>
+              <div class="ms-auto">
+                <button class="btn btn-brand-ol btn-round">
+                  <img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)">
+                </button>
+              </div>
+            </div>
+
+            <div class="box ch-gy-3">
+              <div class="ch-gy-2">
+                <div><b class="fs-label c-text1 me-3">日期</b> 2021/11/20~2021/11/23</div>
+                <div><b class="fs-label c-text1 me-3">津貼NT$</b> 2000</div>
+              </div>
+              <div class="d-flex ch-gx-3">
+                <button class="btn btn-brand">同意</button>
+                <button class="btn btn-white">拒絕</button>
+              </div>
+            </div>
+
+            <div>2021/11/20 12:00:00</div>
+            <hr>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <div id="modal">
+      <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
+    </div>
+
+    <footer>
+      <script>$.get('/templates/include/footer.html', (res)=>{ $('footer')[0].outerHTML=res } )</script>
+    </footer>
+
+  </div>
+</body>
+</html>
