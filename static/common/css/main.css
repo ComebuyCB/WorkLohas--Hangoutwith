@@ -87,6 +87,8 @@
     input::placeholder { color: var(--text-2); }
     select > option:disabled { color: var(--text-2); }
 
+
+
 /*######### [Plugins] #########*/
   /*====== [Plugins Modified] ======*/
     /*=== Bootstrap ===*/
@@ -98,6 +100,7 @@
         }
 
         .form-label { display: block; color: var(--text-1); font-size: var(--h5); font-weight: bold; }
+        .form-control[readonly] { background-color: var(--rgba-white); }
         .form-control, .form-select { min-height: 46px; padding: 10px 16px; border-color: var(--border); border-radius: 8px; }
         .form-control::placeholder, .form-select::placeholder { color: var(--text-2); }
         .form-control:focus, .form-select:focus { box-shadow: none; border-color: var(--dark); }
@@ -149,16 +152,12 @@
         .container-nav-scroll-x > * { padding-left: var(--bs-gutter-x, 0.75rem); overflow: auto; }
 
 
-
     /*=== swiper ===*/
       .swiper-button-next, .swiper-button-prev { color: var(--white); --swiper-navigation-size: 20px; }
       .swiper-button-next { right: 12px; }
       .swiper-button-prev { left: 12px; }
 
       .swiper-wrapper.disabled { transform: translate3d(0px, 0, 0) !important;}
-
-      /* typesetting */
-        /* (will only ==> sm-lg-xl ) */
 
 
 
@@ -227,9 +226,6 @@
 
 
     /*=== typesetting ===*/
-      @media( max-width: 1199.98px ){
-        .xl_\:px-0 { padding-left: 0; padding-right: 0; }
-      }
       @media( max-width: 991.98px ){
         .lg_\:px-0 { padding-left: 0; padding-right: 0; }
       }
@@ -343,11 +339,6 @@
         .w-lg-auto { width: auto !important;}
         .w-lg-0 { width: 0 !important;}
         .w-lg-100 { width: 100% !important;}
-      }
-      @media( min-width: 1200px ){
-        .w-xl-auto { width: auto !important;}
-        .w-xl-0 { width: 0 !important;}
-        .w-xl-100 { width: 100% !important;}
       }
       .max-w-95 { max-width: 95px; }
       .max-w-120 { max-width: 120px; }
@@ -606,7 +597,12 @@
       .cs-apply { padding-left: var(--gap-4); border-left: 4px solid var(--border); }
 
     /*=== invite me ===*/
-      
+      .section-blockLine { border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 40px; }
+      .section-blockLine > *:not(:first-child) { margin-top: 1rem; }
+
+      @media( max-width: 991.98px ){
+        .section-blockLine { margin-bottom: 24px; }
+      }
 
     
 
