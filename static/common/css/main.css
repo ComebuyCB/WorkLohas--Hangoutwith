@@ -73,9 +73,10 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; font-size: var(--rem); color: var(--dark); }
     #wrap { display: flex; flex-direction: column; min-height: var(--wh); margin-left: auto; margin-right: auto; }
-    main { flex-grow: 1; padding-top: .75rem; padding-bottom: 1.25rem; }
+    main { flex-grow: 1; }
+    main > .container { padding-top: .75rem; padding-bottom: 1.25rem; }
     @media ( min-width: 992px ){
-      main { flex-grow: 1; padding-top: 2.5rem; padding-bottom: 3rem; }
+      main > .container { padding-top: 2.5rem; padding-bottom: 3rem; }
     }
 
 
@@ -227,10 +228,12 @@
 
     /*=== typesetting ===*/
       @media( max-width: 991.98px ){
-        .lg_\:px-0 { padding-left: 0; padding-right: 0; }
+        .lg_\:p-0 { padding: 0 !important; }
+        .lg_\:px-0 { padding-left: 0 !important; padding-right: 0 !important; }
       }
       @media( max-width: 575.98px ){
-        .sm_\:px-0 { padding-left: 0; padding-right: 0; }
+        .sm_\:p-0 { padding: 0 !important; }
+        .sm_\:px-0 { padding-left: 0 !important; padding-right: 0 !important; }
       }
 
       .flex-center { display: flex; align-items: center; justify-content: center; }
@@ -604,7 +607,22 @@
         .section-blockLine { margin-bottom: 24px; }
       }
 
-    
+
+    /* chat */
+      .chatBox { display: flex; flex-direction: column; height: 100%; border: solid 1px var(--border); border-radius: 8px; overflow: hidden; }
+      .chatBox > * { padding: 1rem; }
+      .chatBox > *:not(:first-child) { border-top: solid 1px var(--border); }
+      @media( max-width: 575.98px ){
+        .chatBox { border: 0; }
+      }
+      
+      .chat-dialog { margin-top: 16px; }
+      .chat-dialog > .chat-dialog--msg { display: inline-block; padding: 8px 12px; max-width: 80%; border-radius: 8px; text-align: left; }
+      .chat-dialog.me { text-align: right; }
+      .chat-dialog.me > .chat-dialog--msg { background-color: var(--brand); color: white; }
+      .chat-dialog.you > .chat-dialog--msg { background-color: var(--background); color: var(--dark); }
+      .chat-dialog > .chat-dialog--time { margin-top: 8px; color: var(--text-2); font-size: var(--h5); }
+
 
     @media( min-width: 576px ){}
     @media( min-width: 768px ){}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="shortcut Icon" type="image/x-icon" href="/static/common/img/logo/Logo@3x.png">
+  <title></title>
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- core -->
+  <script src="/static/core/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <link href="/static/core/bootstrap-5.1.3/css/bootstrap-custom.css" rel="stylesheet">
+  <script src="/static/core/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+
+  <!-- plugins -->
+  <!-- 測試機 -->
+  <script src="/static/plugins/vue-2.6.12/vue.js"></script>
+  <!-- 正式機 -->
+  <!-- <script src="/static/plugins/vue-2.6.12/vue.min.js"></script> -->
+  <!-- <script src="/static/plugins/axios-0.21.1/axios.min.js"></script> -->
+
+  <link href="/static/plugins/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet">
+  <script src="/static/plugins/svg-inject-v1.2.3/svg-inject.min.js"></script>
+
+  <link href="/static/plugins/Swiper-8.0.6/swiper-bundle.min.css" rel="stylesheet"/>
+  <script src="/static/plugins/Swiper-8.0.6/swiper-bundle.min.js"></script>
+
+  <!-- main -->
+  <link href="/static/common/css/main.css" rel="stylesheet">
+  <script src="/static/common/js/main.js"></script>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <script>$.get('/templates/include/header.html', (res)=>{ $('header')[0].outerHTML=res } )</script>
+    </header>
+    
+    <main id="main" class="pos-r">
+      <div class="container pos-a loc-full sm_:p-0">
+        <div class="chatBox">
+          <div>
+            <div class="page-header mb-0">
+              <button type="button" class="btn btn-white btn-round page-prev"></button>
+              <h2 class="page-title">動森小廚神 🐣 小菜雞</h2>
+              <div class="pos-a loc-9">
+                <button class="btn btn-brand-ol d-none d-lg-inline-flex">
+                  <img class="me-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)">Lets Hangout
+                </button>
+                <button class="btn btn-brand-ol btn-round w-auto d-lg-none">
+                  <img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)">
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="chatCont-scroll" class="flex-1 ov-a" style="overflow:auto">
+            <div id="chatCont">
+              <div class="chat-dialog me">
+                <div class="chat-dialog--msg">有一天有個帥哥走在路上，一個阿嬤突然上前搭訕說「帥哥，你超會搭耶」，然後帥哥就冒煙了，哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
+                <div class="chat-dialog--time">2021/11/15 13:00</div>
+              </div>
+              <div class="chat-dialog you">
+                <div class="chat-dialog--msg">123<br>456<br>789<br></div>
+                <div class="chat-dialog--time">2021/11/15 13:00</div>
+              </div>
+              <div class="chat-dialog me">
+                <div class="chat-dialog--msg">123<br>456<br>789<br></div>
+                <div class="chat-dialog--time">2021/11/15 13:00</div>
+              </div>
+              <div class="chat-dialog you">
+                <div class="chat-dialog--msg">有一天有個帥哥走在路上，一個阿嬤突然上前搭訕說「帥哥，你超會搭耶」，然後帥哥就冒煙了</div>
+                <div class="chat-dialog--time">2021/11/15 13:00</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="d-flex ch-gx-2">
+              <input id="msg" class="form-control" placeholder="輸入" />
+              <button class="btn btn-brand w-auto" onclick="sendMessage()">送出</button>
+            </div>
+            <div class="form-desc">留言時請遵守留言規則。</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <div id="modal">
+      <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
+    </div>
+
+    <footer>
+      <script>$.get('/templates/include/footer.html', (res)=>{ $('footer')[0].outerHTML=res } )</script>
+    </footer>
+  </div>
+  <script>
+    // webSocket (Java Server + JavaScript Client)
+    // https://www.youtube.com/watch?v=_Fi4vz6oUio
+    // 
+    $(function(){
+      scrollDown()
+    })
+
+    function scrollDown(){
+      let ID = document.getElementById('chatCont-scroll')
+      ID.scrollTo( 0, ID.scrollHeight )
+    }
+
+    /* WebSocket */
+    var ws = new WebSocket("ws://" + location.host )
+    ws.onopen = function(){ // 連接成功
+      console.log('connected!')
+    }
+    ws.onmessage = function(msg){ // 監聽server推送的訊息
+      console.log('server: ' + msg)
+    }
+    ws.onclose = function(){
+      console.log('WebSocket closed!')
+      ws = false
+    }
+    ws.onerror = function(){
+      console.log("error!")
+    }
+    function sendMessage(){
+      if ( ws.readyState == 1 ){
+        ws.send( $('#msg').val() )
+        scrollDown()
+      }
+    }
+    window.onbeforeunload = function(){  
+      ws.close()
+    } 
+  </script>

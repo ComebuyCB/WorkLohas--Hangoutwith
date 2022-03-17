@@ -1,6 +1,6 @@
 setWH()
 window.onresize = function(){
-  setWH
+  setWH()
 }
 
 $(function(){
