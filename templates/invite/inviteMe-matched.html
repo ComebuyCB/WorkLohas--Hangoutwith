@@ -54,14 +54,14 @@
           </div>
         </nav>
 
-        <div class="ch-gy-5 max-w-660 mt-5">
+        <div class="ch-gy-4 max-w-660 mt-lg-3">
 
           <div class="section-blockLine">
-            <div class="flex-center-a">
-              <div class="me-3">
-                <div class="avatar avatar-white avatar-sm" style="background-image: url(/static/common/img/avatar/4.jpg)"></div>
+            <div class="flex-center-a ch-gx-3">
+              <div>
+                <div class="avatar avatar-white" style="background-image: url(/static/common/img/avatar/4.jpg)"></div>
               </div>
-              <div class="d-flex flex-column">
+              <div class="ch-gy-1">
                 <div>你已同意 <b>動森小廚神 🐣 小菜雞</b> 的邀約</div>
                 <div>自由業 • 請客</div>
               </div>
@@ -88,6 +88,51 @@
                   </div>
                   <div class="col-12 col-lg">
                     <button class="btn btn-white" data-bs-toggle="modal" data-bs-target="#modal-verifyCode">輸入核銷碼</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fs-14 c-text1">2021/11/20 12:00:00</div>
+          </div>
+
+          <div class="section-blockLine">
+            <div class="flex-center-a ch-gx-3">
+              <div>
+                <div class="avatar avatar-white" style="background-image: url(/static/common/img/avatar/4.jpg)"></div>
+              </div>
+              <div class="ch-gy-1">
+                <div>你已同意 <b>動森小廚神 🐣 小菜雞</b> 的邀約</div>
+                <div>自由業 • 請客</div>
+              </div>
+              <div class="ms-auto">
+                <button class="btn btn-brand-ol btn-round">
+                  <img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)">
+                </button>
+              </div>
+            </div>
+            <div class="box ch-gy-3">
+              <!-- 對方按下按鈕二擇一 -->
+              <a class="c-danger img-text a-link" href="javascript:" data-bs-toggle="modal" data-bs-target="#modal-asked-cancel">
+                <img src="/static/common/img/svg/Warning.svg" onload="SVGInject(this)"><span><b>動森小廚神 🐣 小菜雞</b> 已提出取消此邀約，請問是否同意？</span>
+              </a>
+              <a class="c-danger img-text a-link" href="javascript:" data-bs-toggle="modal" data-bs-target="#modal-asked-notArrived">
+                <img src="/static/common/img/svg/Warning.svg" onload="SVGInject(this)"><span><b>動森小廚神 🐣 小菜雞</b> 已提出您未如期赴約，請問是否同意？</span>
+              </a>
+
+              <div class="ch-gy-2">
+                <div><b class="fs-label c-text1 me-3">日期</b> 2021/11/20~2021/11/23</div>
+                <div><b class="fs-label c-text1 me-3">津貼NT$</b> 2000</div>
+              </div>
+              <div class="d-lg-flex">
+                <div class="row g-3">
+                  <div class="col-12 col-lg">
+                    <button class="btn btn-brand-ol" disabled data-bs-toggle="modal" data-bs-target="#modal-cancel">我要取消</button>
+                  </div>
+                  <div class="col-12 col-lg">
+                    <button class="btn btn-white" disabled data-bs-toggle="modal" data-bs-target="#modal-notArrived">對方未赴約</button>
+                  </div>
+                  <div class="col-12 col-lg">
+                    <button class="btn btn-white" disabled data-bs-toggle="modal" data-bs-target="#modal-verifyCode">輸入核銷碼</button>
                   </div>
                 </div>
               </div>
@@ -172,7 +217,59 @@
         </div>
       </div>
 
+      <div class="modal modal-page fade" id="modal-asked-notArrived" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="page-header">
+                <button type="button" class="btn btn-white btn-round page-prev d-block d-lg-none" data-bs-dismiss="modal"></button>
+                <h2 class="page-title">動森小廚神 🐣 小菜雞 已提出您未如期赴約</h2>
+                <button type="button" class="btn btn-white btn-round page-close d-none d-lg-block" data-bs-dismiss="modal"></button>
+              </div>
+              <ul>
+                <li>若同意未赴約需自您的帳戶扣除30%的金額。</li>
+                <li>建議您可先跟對方溝通後再做決定，以保障雙方權益。</li>
+                <li>累積未赴約兩次，帳號即停權。 </li>
+              </ul>
+              <div class="form-foot justify-content-center ch-gx-3">
+                <button class="btn btn-brand-ol w-100 max-w-160" data-bs-dismiss="modal">不同意</button>
+                <button class="btn btn-brand w-100 max-w-160" data-bs-dismiss="modal">同意</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal modal-page fade" id="modal-asked-cancel" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="page-header">
+                <button type="button" class="btn btn-white btn-round page-prev d-block d-lg-none" data-bs-dismiss="modal"></button>
+                <h2 class="page-title">動森小廚神 🐣 小菜雞 已提出取消此邀約</h2>
+                <button type="button" class="btn btn-white btn-round page-close d-none d-lg-block" data-bs-dismiss="modal"></button>
+              </div>
+              <ul>
+                <li>點選同意並不會造成您的任何損失。</li>
+                <li>點選不同意，此邀約單即會維持在已成立狀態。</li>
+                <li>建議您可先跟對方溝通後再做決定，以保障雙方權益。</li>
+              </ul>
+              <div class="form-foot justify-content-center ch-gx-3">
+                <button class="btn btn-brand-ol w-100 max-w-160" data-bs-dismiss="modal">不同意</button>
+                <button class="btn btn-brand w-100 max-w-160" data-bs-dismiss="modal">同意</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </main>
+
+<!-- ### component/modal-heart.html ### -->
+    <div id="comp-modal-heart">
+      <script>$.get('/templates/component/modal-heart.html', (res)=>{ $('#comp-modal-heart')[0].outerHTML=res } )</script>
+    </div>
+<!-- ### component/modal-heart.html /END ### -->
 
     <div id="modal">
       <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>

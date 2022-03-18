@@ -1,0 +1,142 @@
+<div id="comp-modal-buy">
+  <div class="modal modal-bot fade" id="modal-step1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="page-header">
+            <h2 class="page-title">請選擇購買項目</h2>
+            <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div>
+            <div class="form-body">
+              <div class="ch-gy-3">
+                <label v-for="(val, key) in step2" class="ckb ckbBox ckb100">
+                  <input type="radio" name="buyType" :value="key" v-model="userSelected.buyType">
+                  <div>{{val.title}}</div>
+                </label>
+              </div>
+            </div>
+            <div class="form-foot">
+              <button id="nextStep" type="button" class="btn btn-brand" :disabled="userSelected.buyType === ''" data-bs-toggle="modal" data-bs-target="#modal-step2">下一步</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-bot fade" id="modal-step2" data-bs-backdrop="static" v-if="userSelected.buyType">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="page-header">
+            <button type="button" class="btn btn-white btn-round page-prev" data-bs-toggle="modal" data-bs-target="#modal-step1" @click="clearUserSelected()"></button>
+            <h2 class="page-title">{{ step2[userSelected.buyType].title }}</h2>
+            <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal" @click="clearUserSelected()"></button>
+          </div>
+          <div>
+            <div class="form-body">
+              <div class="form-group">
+                <div class="form-label">{{ step2[userSelected.buyType].chooseTitle }}</div>
+                <div class="ch-gy-3">
+                  <label class="ckb ckbBox ckb100" v-for="item in step2[userSelected.buyType].chooseType">
+                    <input type="radio" name="chooseType" :value="item.value" v-model="userSelected.chooseType">
+                    <div>
+                      <div>
+                        <div>{{item.title}}</div>
+                        <div class="desc">{{item.desc}}</div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-label">{{ step2[userSelected.buyType].payTitle }}</div>
+                <div class="ch-gy-3">
+                  <label class="ckb ckbBox ckb100" v-for="item in step2[userSelected.buyType].payType">
+                    <input type="radio" name="payType" :value="item.value" v-model="userSelected.payType">
+                    <div>
+                      <div>
+                        <div>{{item.title}}</div>
+                        <div class="desc">{{item.desc}}</div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-foot">
+              <button type="button" class="btn btn-brand" :disabled="userSelected.chooseType === '' || userSelected.payType=== ''" @click="modal_submit">確認購買</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: '#comp-modal-buy',
+    data: {
+      step2: {
+        member: {
+          title: '升級會員',
+          chooseTitle: '選擇會員',
+          chooseType: [
+            { title: '一般會員', desc: '每月NT$ 100元，每月額度30,000', value: 'normal' },
+            { title: '高級會員', desc: '每月NT$ 300元，每月額度100,000', value: 'premium' }
+          ],
+          payTitle: '選擇支付方式',
+          payType: [
+            { title: '信用卡支付', desc: '每月定期繳費，可隨時至會員專區取消', value: 'credit' },
+          ],
+        },
+        amount: {
+          title: '加購額度',
+          chooseTitle: '選擇額度 (購買完成一個月內)',
+          chooseType: [
+            { title: 'NT$ 100元', desc: '可增加額度至30,000', value: '100' },
+            { title: 'NT$ 300元', desc: '可增加額度至30,000', value: '300' }
+          ],
+          payTitle: '選擇支付方式',
+          payType: [
+            { title: 'Apply Pay', desc: null, value: 'applyPay' },
+            { title: 'Google PAY', desc: null, value: 'googlePay' },
+            { title: '信用卡支付', desc: null, value: 'credit' },
+          ],
+        },
+        heart: {
+          title: '加購愛心',
+          chooseTitle: '選擇顆數',
+          chooseType: [
+            { title: 'NT$ 100元', desc: '可增加愛心1000顆', value: '100' },
+            { title: 'NT$ 300元', desc: '可增加愛心3000顆', value: '300' }
+          ],
+          payTitle: '選擇支付方式',
+          payType: [
+            { title: 'Apply Pay', desc: null, value: 'applyPay' },
+            { title: 'Google PAY', desc: null, value: 'googlePay' },
+            { title: '信用卡支付', desc: null, value: 'credit' },
+          ],
+        },
+      },
+
+      userSelected: {
+        buyType: '',
+        chooseType: '',
+        payType: '',
+      }
+    },
+    methods: {
+      clearUserSelected(){
+        this.userSelected.chooseType = ''
+        this.userSelected.payType = ''
+      },
+      modal_submit(){
+        let postData = JSON.parse(JSON.stringify( this.userSelected ))
+        console.log( postData )
+      }
+    },
+  })
+</script>

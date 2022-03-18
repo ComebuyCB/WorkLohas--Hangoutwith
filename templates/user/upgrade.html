@@ -34,7 +34,7 @@
       <script>$.get('/templates/include/header.html', (res)=>{ $('header')[0].outerHTML=res } )</script>
     </header>
     
-    <main id="main">
+    <main>
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-3 d-none d-lg-block">
@@ -108,7 +108,10 @@
           </div>
         </div>
       </div>
+    </main>
 
+<!-- ### component/modal-buy.html ### -->
+    <div id="comp-modal-buy">
       <div class="modal modal-bot fade" id="modal-step1" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
@@ -134,7 +137,6 @@
           </div>
         </div>
       </div>
-
       <div class="modal modal-bot fade" id="modal-step2" data-bs-backdrop="static" v-if="userSelected.buyType">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
@@ -183,8 +185,74 @@
           </div>
         </div>
       </div>
+    </div>
 
-    </main>
+    <script>
+      new Vue({
+        el: '#comp-modal-buy',
+        data: {
+          step2: {
+            member: {
+              title: '升級會員',
+              chooseTitle: '選擇會員',
+              chooseType: [
+                { title: '一般會員', desc: '每月NT$ 100元，每月額度30,000', value: 'normal' },
+                { title: '高級會員', desc: '每月NT$ 300元，每月額度100,000', value: 'premium' }
+              ],
+              payTitle: '選擇支付方式',
+              payType: [
+                { title: '信用卡支付', desc: '每月定期繳費，可隨時至會員專區取消', value: 'credit' },
+              ],
+            },
+            amount: {
+              title: '加購額度',
+              chooseTitle: '選擇額度 (購買完成一個月內)',
+              chooseType: [
+                { title: 'NT$ 100元', desc: '可增加額度至30,000', value: '100' },
+                { title: 'NT$ 300元', desc: '可增加額度至30,000', value: '300' }
+              ],
+              payTitle: '選擇支付方式',
+              payType: [
+                { title: 'Apply Pay', desc: null, value: 'applyPay' },
+                { title: 'Google PAY', desc: null, value: 'googlePay' },
+                { title: '信用卡支付', desc: null, value: 'credit' },
+              ],
+            },
+            heart: {
+              title: '加購愛心',
+              chooseTitle: '選擇顆數',
+              chooseType: [
+                { title: 'NT$ 100元', desc: '可增加愛心1000顆', value: '100' },
+                { title: 'NT$ 300元', desc: '可增加愛心3000顆', value: '300' }
+              ],
+              payTitle: '選擇支付方式',
+              payType: [
+                { title: 'Apply Pay', desc: null, value: 'applyPay' },
+                { title: 'Google PAY', desc: null, value: 'googlePay' },
+                { title: '信用卡支付', desc: null, value: 'credit' },
+              ],
+            },
+          },
+  
+          userSelected: {
+            buyType: '',
+            chooseType: '',
+            payType: '',
+          }
+        },
+        methods: {
+          clearUserSelected(){
+            this.userSelected.chooseType = ''
+            this.userSelected.payType = ''
+          },
+          modal_submit(){
+            let postData = JSON.parse(JSON.stringify( this.userSelected ))
+            console.log( postData )
+          }
+        },
+      })
+    </script>
+<!-- ### component/modal-buy.html /END ### -->
 
     <div id="modal">
       <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
@@ -195,71 +263,6 @@
     </footer>
   </div>
 
-  <script>
-    new Vue({
-      el: '#main',
-      data: {
-        step2: {
-          member: {
-            title: '升級會員',
-            chooseTitle: '選擇會員',
-            chooseType: [
-              { title: '一般會員', desc: '每月NT$ 100元，每月額度30,000', value: 'normal' },
-              { title: '高級會員', desc: '每月NT$ 300元，每月額度100,000', value: 'premium' }
-            ],
-            payTitle: '選擇支付方式',
-            payType: [
-              { title: '信用卡支付', desc: '每月定期繳費，可隨時至會員專區取消', value: 'credit' },
-            ],
-          },
-          amount: {
-            title: '加購額度',
-            chooseTitle: '選擇額度 (購買完成一個月內)',
-            chooseType: [
-              { title: 'NT$ 100元', desc: '可增加額度至30,000', value: '100' },
-              { title: 'NT$ 300元', desc: '可增加額度至30,000', value: '300' }
-            ],
-            payTitle: '選擇支付方式',
-            payType: [
-              { title: 'Apply Pay', desc: null, value: 'applyPay' },
-              { title: 'Google PAY', desc: null, value: 'googlePay' },
-              { title: '信用卡支付', desc: null, value: 'credit' },
-            ],
-          },
-          heart: {
-            title: '加購愛心',
-            chooseTitle: '選擇顆數',
-            chooseType: [
-              { title: 'NT$ 100元', desc: '可增加愛心1000顆', value: '100' },
-              { title: 'NT$ 300元', desc: '可增加愛心3000顆', value: '300' }
-            ],
-            payTitle: '選擇支付方式',
-            payType: [
-              { title: 'Apply Pay', desc: null, value: 'applyPay' },
-              { title: 'Google PAY', desc: null, value: 'googlePay' },
-              { title: '信用卡支付', desc: null, value: 'credit' },
-            ],
-          },
-        },
 
-        userSelected: {
-          buyType: '',
-          chooseType: '',
-          payType: '',
-        }
-      },
-      methods: {
-        clearUserSelected(){
-          this.userSelected.chooseType = ''
-          this.userSelected.payType = ''
-        },
-        modal_submit(){
-          let postData = JSON.parse(JSON.stringify( this.userSelected ))
-          console.log( postData )
-        }
-      },
-    })
-
-  </script>
 </body>
 </html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="shortcut Icon" type="image/x-icon" href="/static/common/img/logo/Logo@3x.png">
+  <title></title>
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- core -->
+  <script src="/static/core/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <link href="/static/core/bootstrap-5.1.3/css/bootstrap-custom.css" rel="stylesheet">
+  <script src="/static/core/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+
+  <!-- plugins -->
+  <!-- 測試機 -->
+  <script src="/static/plugins/vue-2.6.12/vue.js"></script>
+  <!-- 正式機 -->
+  <!-- <script src="/static/plugins/vue-2.6.12/vue.min.js"></script> -->
+  <!-- <script src="/static/plugins/axios-0.21.1/axios.min.js"></script> -->
+
+  <link href="/static/plugins/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet">
+  <script src="/static/plugins/svg-inject-v1.2.3/svg-inject.min.js"></script>
+
+  <link href="/static/plugins/Swiper-8.0.6/swiper-bundle.min.css" rel="stylesheet"/>
+  <script src="/static/plugins/Swiper-8.0.6/swiper-bundle.min.js"></script>
+
+  <!-- main -->
+  <link href="/static/common/css/main.css" rel="stylesheet">
+  <script src="/static/common/js/main.js"></script>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <script>$.get('/templates/include/header.html', (res)=>{ $('header')[0].outerHTML=res } )</script>
+    </header>
+    
+    <main>
+      <div class="container">
+        <nav>
+          <div class="nav nav-tabs">
+            <a class="nav-link" href="/templates/heart/heartList-get.html">獲得 (Get)</a>
+            <a class="nav-link active" href="/templates/heart/heartList-sent.html">已贈送 (Sent)</a>
+            <a class="nav-link img-text" href="/templates/heart/heartList-sentLocked.html"><span>已贈送 (Sent)</span><img src="/static/common/img/svg/Lock.svg" onload="SVGInject(this)"></a>
+          </div>
+        </nav>
+
+        <div class="max-w-660 mt-3">
+          <div class="section-blockLine">
+            <div class="flex-center-a">
+              <div class="me-3">
+                <div class="avatar avatar-white" style="background-image: url(/static/common/img/avatar/0.jpg)"></div>
+              </div>
+              <div class="d-flex flex-column ch-gy-2">
+                <div><b>一夜三枯八百里</b></div>
+                <div class="img-text fw-bold"><img src="/static/common/img/svg/heart.svg">贈送 50</div>
+              </div>
+              <div class="ms-auto d-flex ch-gx-2">
+                <button class="btn btn-brand btn-round"><img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"></button>
+                <button class="btn btn-brand-ol btn-round"><img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)"></button>
+              </div>
+            </div>
+            <div class="pos-r">
+              <div class="text-more pe-5">可以聊聊嗎? 恩，在我喜歡吃浮游生可以聊聊嗎? 恩，在我喜歡吃浮游生物可以恩，在我喜歡吃浮游生物可以</div>
+              <div class="pos-a loc-6"><div class="badge badge-brand">1</div></div>
+            </div>
+            <div class="form-desc">立刻贈送100顆愛心，獲得留言功能！</div>
+            <div class="img-text"><img src="/static/common/img/svg/eva_clock-outline.svg"> 23小時後過期</div>
+          </div>
+
+          <div class="section-blockLine">
+            <div class="flex-center-a">
+              <div class="me-3">
+                <div class="avatar avatar-white" style="background-image: url(/static/common/img/avatar/1.jpg)"></div>
+              </div>
+              <div class="d-flex flex-column ch-gy-2">
+                <div><b>星星走丟了</b></div>
+                <div class="img-text fw-bold"><img src="/static/common/img/svg/heart.svg">贈送 100</div>
+              </div>
+              <div class="ms-auto d-flex ch-gx-2">
+                <button class="btn btn-brand btn-round"><img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"></button>
+                <button class="btn btn-brand-ol btn-round"><img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)"></button>
+              </div>
+            </div>
+            <div class="pos-r">
+              <div class="text-more pe-5">喔~ 是喔 小魚小魚你喜歡吃什麼?</div>
+              <div class="pos-a loc-6"></div>
+            </div>
+            <div class="c-danger img-text"><img src="/static/common/img/svg/Warning.svg" onload="SVGInject(this)"> 已過期</div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+<!-- ### component/modal-heart.html ### -->
+    <div id="comp-modal-heart">
+      <script>$.get('/templates/component/modal-heart.html', (res)=>{ $('#comp-modal-heart')[0].outerHTML=res } )</script>
+    </div>
+<!-- ### component/modal-heart.html /END ### -->
+
+<!-- ### component/modal-hangout.html ### -->
+    <div id="comp-modal-hangout">
+      <script>$.get('/templates/component/modal-hangout.html', (res)=>{ $('#comp-modal-hangout')[0].outerHTML=res } )</script>
+    </div>
+<!-- ### component/modal-hangout.html /END ### -->
+
+    <div id="modal">
+      <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
+    </div>
+
+    <footer>
+      <script>$.get('/templates/include/footer.html', (res)=>{ $('footer')[0].outerHTML=res } )</script>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -37,8 +37,8 @@
       <script>$.get('/templates/include/header.html', (res)=>{ $('header')[0].outerHTML=res } )</script>
     </header>
     
-    <main id="main" class="pos-r">
-      <div class="container pos-a loc-full sm_:p-0">
+    <main id="main" class="pos-r p-0">
+      <div class="container main-padding pos-a loc-full sm_:p-0">
         <div class="chatBox">
           <div>
             <div class="page-header mb-0">
@@ -55,7 +55,7 @@
             </div>
           </div>
 
-          <div id="chatCont-scroll" class="flex-1 ov-a" style="overflow:auto">
+          <div id="chatCont-scroll" class="flex-1 overflow-auto">
             <div id="chatCont">
               <div class="chat-dialog me">
                 <div class="chat-dialog--msg">有一天有個帥哥走在路上，一個阿嬤突然上前搭訕說「帥哥，你超會搭耶」，然後帥哥就冒煙了，哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
@@ -77,9 +77,11 @@
           </div>
 
           <div>
-            <div class="d-flex ch-gx-2">
-              <input id="msg" class="form-control" placeholder="輸入" />
-              <button class="btn btn-brand w-auto" onclick="sendMessage()">送出</button>
+            <div class="flex-center-a ch-gx-2">
+              <div id="msg" contenteditable class="form-control overflow-auto" style="max-height: 94px"></div>
+              <div>
+                <button class="btn btn-brand w-auto" onclick="sendMessage()">送出</button>
+              </div>
             </div>
             <div class="form-desc">留言時請遵守留言規則。</div>
           </div>
@@ -125,8 +127,9 @@
       console.log("error!")
     }
     function sendMessage(){
+      console.log( $('#msg').text() )
       if ( ws.readyState == 1 ){
-        ws.send( $('#msg').val() )
+        ws.send( $('#msg').text() )
         scrollDown()
       }
     }

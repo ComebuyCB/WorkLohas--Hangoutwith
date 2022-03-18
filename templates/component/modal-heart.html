@@ -1,0 +1,113 @@
+<div id="comp-modal-heart">
+  <div class="modal modal-bot fade" id="modal-heart" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="page-header">
+            <h2 class="page-title">送愛心</h2>
+            <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal" onclick="initHeart()"></button>
+          </div>
+
+          <div>
+            <div class="form-body">
+              <div class="form-section">
+                <div class="form-group">
+                  <div>贈送超過100顆愛心，立刻享有留言功能~</div>
+                </div>
+                <div class="form-group">
+                  <div class="flex-center-a ch-gx-3">
+                    <button type="button" class="btn btn-white btn-round" onclick="addHeart('-')"><img src="/static/common/img/svg/Minus.svg"></button>
+                    <input id="heart-input" type="number" class="form-control" oninput="currentHeart()" value="1" style="width: 100px">
+                    <button type="button" class="btn btn-white btn-round" onclick="addHeart('+')"><img src="/static/common/img/svg/Plus.svg"></button>
+                  </div>
+                </div>
+              </div>
+              <div id="heart-message-section" class="form-section">
+                <div class="form-group">
+                  <label class="form-label">留言</label>
+                  <textarea class="form-control" rows="5" placeholder="分享自我介紹訊息增加興趣交流的機會" name="heart_message"></textarea>
+                  <div class="form-desc">留言時請遵守留言規則。</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-foot">
+              <button type="button" class="btn btn-brand">送出</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var heart = {
+    id: '',
+    input: 1,
+    iSent: 1,
+    message: 0,
+  }
+  var bsModal_heart = new bootstrap.Modal( document.getElementById('modal-heart') )
+  function openModal_heart( id, heartISent = 0 ){
+    heart.id = id
+    heart.iSent = heartISent
+    show_HeartMessageSection()
+    bsModal_heart.show()
+  }
+  function currentHeart(){
+    let value = +$('[name=heart_input]').val()
+    heart.input = !value || value < 0 ? 0 : value
+    $('[name=heart_input]').val( heart.input )
+    show_HeartMessageSection()
+  }
+  function show_HeartMessageSection(){
+    if ( heart.iSent + heart.input >= 100 ){
+      $('#heart-message-section').show()
+    } else {
+      $('#heart-message-section').hide()
+    }
+  }
+  function initHeart(){
+    heart = {
+      id: '',
+      input: 1,
+      iSent: 0,
+      message: '',
+    }
+    $('[name=heart_input]').val(heart.input)
+    $('[name=heart_message]').text(heart.message)
+  }
+  function addHeart( type ){
+    switch( type ){ 
+      case '+':
+        if ( heart.input === 0 ){
+          heart.input = 1
+        } else {
+          heart.input = Math.ceil( (heart.input + 1) / 100 ) * 100
+        }
+      break;
+      case '-':
+        if ( heart.input > 100 ){
+          heart.input = Math.floor( (heart.input - 1) / 100 ) * 100
+        } else if ( heart.input <= 1 ) {
+          heart.input = 0
+        } else {
+          heart.input = 1
+        }
+      break;
+    }
+    $('#heart-input').val( heart.input )
+    currentHeart()
+  }
+  function submitModal_heart(){
+    heart.input = $('[name=heart_input]').val()
+    heart.message = $('[name=heart_message]').text()
+
+    $.get('/',()=>{ // post
+      alert('請看console')
+      console.log( heart )
+      bsModal_heart.hide()
+      initHeart()
+    })
+  }
+</script>

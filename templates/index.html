@@ -85,7 +85,7 @@
 
                 <div class="pCard-bot">
                   <div class="d-flex justify-content-between">
-                    <button class="btn btn-brand w-auto" @click="openModal_hangout1(item)">
+                    <button class="btn btn-brand w-auto" @click="openModal_hangout(item)">
                       <img class="me-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)">Lets Hangout
                     </button>
                     <button class="btn btn-brand-ol btn-round" @click="openModal_heart(item)">
@@ -190,8 +190,8 @@
       </div>
     </main>
 
-    <div id="modal">
-
+<!-- ### component/modal-heart.html ### -->
+    <div id="comp-modal-heart">
       <div class="modal modal-bot fade" id="modal-heart" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
@@ -200,7 +200,7 @@
                 <h2 class="page-title">送愛心</h2>
                 <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal" onclick="initHeart()"></button>
               </div>
-    
+
               <div>
                 <div class="form-body">
                   <div class="form-section">
@@ -231,7 +231,83 @@
           </div>
         </div>
       </div>
-    
+    </div>
+
+    <script>
+      var heart = {
+        id: '',
+        input: 1,
+        iSent: 1,
+        message: 0,
+      }
+      var bsModal_heart = new bootstrap.Modal( document.getElementById('modal-heart') )
+      function openModal_heart( id, heartISent = 0 ){
+        heart.id = id
+        heart.iSent = heartISent
+        show_HeartMessageSection()
+        bsModal_heart.show()
+      }
+      function currentHeart(){
+        let value = +$('[name=heart_input]').val()
+        heart.input = !value || value < 0 ? 0 : value
+        $('[name=heart_input]').val( heart.input )
+        show_HeartMessageSection()
+      }
+      function show_HeartMessageSection(){
+        if ( heart.iSent + heart.input >= 100 ){
+          $('#heart-message-section').show()
+        } else {
+          $('#heart-message-section').hide()
+        }
+      }
+      function initHeart(){
+        heart = {
+          id: '',
+          input: 1,
+          iSent: 0,
+          message: '',
+        }
+        $('[name=heart_input]').val(heart.input)
+        $('[name=heart_message]').text(heart.message)
+      }
+      function addHeart( type ){
+        switch( type ){ 
+          case '+':
+            if ( heart.input === 0 ){
+              heart.input = 1
+            } else {
+              heart.input = Math.ceil( (heart.input + 1) / 100 ) * 100
+            }
+          break;
+          case '-':
+            if ( heart.input > 100 ){
+              heart.input = Math.floor( (heart.input - 1) / 100 ) * 100
+            } else if ( heart.input <= 1 ) {
+              heart.input = 0
+            } else {
+              heart.input = 1
+            }
+          break;
+        }
+        $('#heart-input').val( heart.input )
+        currentHeart()
+      }
+      function submitModal_heart(){
+        heart.input = $('[name=heart_input]').val()
+        heart.message = $('[name=heart_message]').text()
+
+        $.get('/',()=>{ // post
+          alert('請看console')
+          console.log( heart )
+          bsModal_heart.hide()
+          initHeart()
+        })
+      }
+    </script>
+<!-- ### component/modal-heart.html /END ### -->
+
+<!-- ### component/modal-hangout.html ### -->
+    <div id="comp-modal-hangout">
       <div class="modal modal-bot fade" id="modal-hangout-step1" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
@@ -247,7 +323,7 @@
                     <label class="form-label">要做什麼呢？</label>
                     <div class="ch-g-2">
                       <label class="ckb ckbBox ckbHide">
-                        <input type="radio" name="hangout_hobby" value="Coffee Chat">
+                        <input type="checkbox" name="hangout_hobby" value="Coffee Chat">
                         <div>
                           <div class="img-text">
                             <img src="/static/common/img/svg/coffee.svg"> Coffee Chat
@@ -255,7 +331,7 @@
                         </div>
                       </label>
                       <label class="ckb ckbBox ckbHide">
-                        <input type="radio" name="hangout_hobby" value="Outdoor activity">
+                        <input type="checkbox" name="hangout_hobby" value="Outdoor activity">
                         <div>
                           <div class="img-text">
                             <img src="/static/common/img/svg/tree.svg"> Outdoor activity
@@ -263,7 +339,7 @@
                         </div>
                       </label>
                       <label class="ckb ckbBox ckbHide">
-                        <input type="radio" name="hangout_hobby" value="Movie Time">
+                        <input type="checkbox" name="hangout_hobby" value="Movie Time">
                         <div>
                           <div class="img-text">
                             <img src="/static/common/img/svg/movie.svg"> Movie Time
@@ -271,7 +347,7 @@
                         </div>
                       </label>
                       <label class="ckb ckbBox ckbHide">
-                        <input type="radio" name="hangout_hobby" value="KTV Super Idol">
+                        <input type="checkbox" name="hangout_hobby" value="KTV Super Idol">
                         <div>
                           <div class="img-text">
                             <img src="/static/common/img/svg/microphone.svg"> KTV Super Idol
@@ -279,7 +355,7 @@
                         </div>
                       </label>
                       <label class="ckb ckbBox ckbHide">
-                        <input type="radio" name="hangout_hobby" value="Foodie">
+                        <input type="checkbox" name="hangout_hobby" value="Foodie">
                         <div>
                           <div class="img-text">
                             <img src="/static/common/img/svg/foodie.svg"> Foodie
@@ -287,7 +363,7 @@
                         </div>
                       </label>
                       <label class="ckb ckbBox ckbHide">
-                        <input type="radio" name="hangout_hobby" value="Concert">
+                        <input type="checkbox" name="hangout_hobby" value="Concert">
                         <div>
                           <div class="img-text">
                             <img src="/static/common/img/svg/concert.svg"> Concert
@@ -305,7 +381,7 @@
           </div>
         </div>
       </div>
-    
+
       <div class="modal modal-bot fade" id="modal-hangout-step2" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
@@ -353,7 +429,7 @@
           </div>
         </div>
       </div>
-    
+
       <div class="modal modal-bot fade" id="modal-hangout-step3" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
@@ -379,16 +455,53 @@
                   </div>
                 </div>
                 <div class="form-foot">
-                  <button type="button" class="btn btn-brand" @click="submitModal_hangout()">送出</button>
+                  <button type="button" class="btn btn-brand" onclick="submitModal_hangout()">送出</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
-      <script>
-        var hangout = {
+    </div>
+
+    <script>
+      var hangout = {
+        id: '',
+        hobby: '',
+        date: '',
+        payType: '',
+        allowance: 0,
+        coupon: 0,
+      }
+      var bsModal_hangout_step1 = new bootstrap.Modal( document.getElementById('modal-hangout-step1') )
+      var bsModal_hangout_step2 = new bootstrap.Modal( document.getElementById('modal-hangout-step2') )
+      var bsModal_hangout_step3 = new bootstrap.Modal( document.getElementById('modal-hangout-step3') )
+
+      function openModal_hangout1( id ){
+        hangout.id = id
+        bsModal_hangout_step2.hide()
+        let sto = setTimeout(()=>{
+          bsModal_hangout_step1.show()
+          clearTimeout(sto)
+        })
+      }
+      function openModal_hangout2(){
+        bsModal_hangout_step1.hide()
+        bsModal_hangout_step3.hide()
+        let sto = setTimeout(()=>{
+          bsModal_hangout_step2.show()
+          clearTimeout(sto)
+        })
+      }
+      function openModal_hangout3(){
+        bsModal_hangout_step2.hide()
+        let sto = setTimeout(()=>{
+          bsModal_hangout_step3.show()
+          clearTimeout(sto)
+        })
+      }
+      function initHangout(){
+        hangout = {
           id: '',
           hobby: '',
           date: '',
@@ -396,108 +509,31 @@
           allowance: 0,
           coupon: 0,
         }
-        var heart = {
-          id: '',
-          input: 1,
-          iSent: 1,
-          message: 0,
-        }
-        var bsModal_hangout_step1 = new bootstrap.Modal( document.getElementById('modal-hangout-step1') )
-        var bsModal_hangout_step2 = new bootstrap.Modal( document.getElementById('modal-hangout-step2') )
-        var bsModal_hangout_step3 = new bootstrap.Modal( document.getElementById('modal-hangout-step3') )
-        var bsModal_heart = new bootstrap.Modal( document.getElementById('modal-heart') )
+        $('[name=hangout_hobby]').prop('checked', false)
+        $('[name=hangout_date]').val(hangout.date)
+        $('[name=hangout_payType]').prop('checked', false)
+        $('[name=hangout_allowance]').val(hangout.allowance)
+        $('[name=hangout_coupon]').val(hangout.coupon)
+      }
+      function submitModal_hangout(){
+        hangout.hobby = Array.from($('[name=hangout_hobby]:checked')).map( item => item.value )
+        hangout.date = $('[name=hangout_date]').val()
+        hangout.payType = $('[name=hangout_payType]:checked').val()
+        hangout.allowance = +$('[name=hangout_allowance]').val()
+        hangout.coupon = $('[name=hangout_coupon]').val()
 
-        function openModal_hangout1( id ){
-          hangout.id = id
-          bsModal_hangout_step2.hide()
-          let sto = setTimeout(()=>{
-            bsModal_hangout_step1.show()
-            clearTimeout(sto)
-          })
-        }
-        function openModal_hangout2(){
-          bsModal_hangout_step1.hide()
+        $.get('/',()=>{ // post
+          alert('請看console')
+          console.log( hangout )
           bsModal_hangout_step3.hide()
-          let sto = setTimeout(()=>{
-            bsModal_hangout_step2.show()
-            clearTimeout(sto)
-          })
-        }
-        function openModal_hangout3(){
-          bsModal_hangout_step2.hide()
-          let sto = setTimeout(()=>{
-            bsModal_hangout_step3.show()
-            clearTimeout(sto)
-          })
-        }
-        function openModal_heart( id, heartISent = 0 ){
-          heart.id = id
-          heart.iSent = heartISent
-          show_HeartMessageSection()
-          bsModal_heart.show()
-        }
-        function currentHeart(){
-          let value = +$('[name=heart_input]').val()
-          heart.input = !value || value < 0 ? 0 : value
-          $('[name=heart_input]').val( heart.input )
-          show_HeartMessageSection()
-        }
-        function show_HeartMessageSection(){
-          if ( heart.iSent + heart.input >= 100 ){
-            $('#heart-message-section').show()
-          } else {
-            $('#heart-message-section').hide()
-          }
-        }
-        function initHeart(){
-          heart = {
-            id: '',
-            input: 1,
-            iSent: 0,
-            message: '',
-          }
-          $('[name=heart_input]').val(heart.input)
-          $('[name=heart_message]').text(heart.message)
-        }
-        function initHangout(){
-          hangout = {
-            id: '',
-            hobby: '',
-            date: '',
-            payType: '',
-            allowance: 0,
-            coupon: 0,
-          }
-          $('[name=hangout_hobby]').prop('checked', false)
-          $('[name=hangout_date]').val(hangout.date)
-          $('[name=hangout_payType]').prop('checked', false)
-          $('[name=hangout_allowance]').val(hangout.allowance)
-          $('[name=hangout_coupon]').val(hangout.coupon)
-        }
-        function addHeart( type ){
-          switch( type ){ 
-            case '+':
-              if ( heart.input === 0 ){
-                heart.input = 1
-              } else {
-                heart.input = Math.ceil( (heart.input + 1) / 100 ) * 100
-              }
-            break;
-            case '-':
-              if ( heart.input > 100 ){
-                heart.input = Math.floor( (heart.input - 1) / 100 ) * 100
-              } else if ( heart.input <= 1 ) {
-                heart.input = 0
-              } else {
-                heart.input = 1
-              }
-            break;
-          }
-          $('#heart-input').val( heart.input )
-          currentHeart()
-        }
-      </script>
-    
+          initHangout()
+        })
+      }
+    </script>
+<!-- ### component/modal-hangout.html /END ### -->
+
+    <div id="modal">
+      <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
     </div>
 
     <footer>
@@ -593,16 +629,7 @@
             $.get('/', (resData)=>{
               let randomId = new Date().getTime()
               resData = [
-                {
-                  id: randomId + 0,
-                  name: '動森小廚神 🐣 小菜雞(3圖90心)',
-                  age: 22,
-                  county: '台北市',
-                  heart: 1000,
-                  heartISent: 90,
-                  hobby: ['Coffee Elite', 'Concert', 'Movie star'],
-                  avatar: ['/static/common/img/avatar/2.jpg','/static/common/img/avatar/3.jpg','/static/common/img/avatar/4.jpg'],
-                },
+                { id: randomId + 0, name: '動森小廚神 🐣 小菜雞(3圖90心)', age: 22, county: '台北市', heart: 1000, heartISent: 150, hobby: ['Coffee Elite', 'Concert', 'Movie star'], avatar: ['/static/common/img/avatar/2.jpg','/static/common/img/avatar/3.jpg','/static/common/img/avatar/4.jpg'],},
                 { id: randomId + 1, name: '一夜三枯八百里(2圖50心)', age: 26,  county: '台中市', heartISent: 50, heart: 600, hobby: ['Concert', 'Movie star'], avatar: ['/static/common/img/avatar/0.jpg','/static/common/img/avatar/1.jpg'], },
                 { id: randomId + 2, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], },
                 { id: randomId + 3, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], },
@@ -635,19 +662,8 @@
         openModal_heart( item ){
           openModal_heart( item.id, item.heartISent )
         },
-        openModal_hangout1( item ){
+        openModal_hangout( item ){
           openModal_hangout1( item.id )
-        },
-        submitModal_heart(){
-          $.get('/',()=>{
-            console.log( heart )
-          })
-        },
-        submitModal_hangout(){
-          $.get('/',()=>{
-            console.log( hangout )
-            bsModal_hangout_step3.hide()
-          })
         }
       }
     })

@@ -41,58 +41,49 @@
       <div class="container">
         <nav>
           <div class="nav nav-tabs">
-            <a class="nav-link active" href="/templates/invite/inviteMe.html">邀約我的</a>
-            <a class="nav-link" href="/templates/invite/meInvite.html">我邀約的</a>
-          </div>
-        </nav>
-        <nav class="container-nav-scroll-x mt-3 mt-lg-5">
-          <div class="nav nav-pills flex-nowrap">
-            <a class="nav-link" href="/templates/invite/inviteMe.html">邀約訊息</a>
-            <a class="nav-link" href="/templates/invite/inviteMe-matched.html">已成立</a>
-            <a class="nav-link" href="/templates/invite/inviteMe-verified.html">已核銷</a>
-            <a class="nav-link active" href="/templates/invite/inviteMe-invalid.html">不成立</a>
+            <a class="nav-link active" href="/templates/heart/heartList-get.html">獲得 (Get)</a>
+            <a class="nav-link" href="/templates/heart/heartList-sent.html">已贈送 (Sent)</a>
+            <a class="nav-link img-text" href="/templates/heart/heartList-sentLocked.html"><span>已贈送 (Sent)</span><img src="/static/common/img/svg/Lock.svg" onload="SVGInject(this)"></a>
           </div>
         </nav>
 
         <div class="ch-gy-4 max-w-660 mt-lg-3">
           <div class="section-blockLine">
-            <div class="flex-center-a ch-gx-3">
-              <div>
+            <div class="flex-center-a">
+              <div class="me-3">
                 <div class="avatar avatar-white" style="background-image: url(/static/common/img/avatar/4.jpg)"></div>
               </div>
-              <div class="ch-gy-1">
-                <div>你已拒絕 <b>動森小廚神 🐣 小菜雞</b> 的邀約</div>
-                <div>自由業 • 請客</div>
-              </div>
-              <div class="ms-auto">
-                <button class="btn btn-brand-ol btn-round">
-                  <img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)">
-                </button>
+              <div class="d-flex flex-column ch-gy-2">
+                <div><b>動森小廚神 🐣 小菜雞</b></div>
+                <div class="img-text fw-bold"><img src="/static/common/img/svg/heart.svg">獲得 50</div>
               </div>
             </div>
+            <div class="pos-r">
+              <div class="text-more pe-5">可以聊聊嗎? 恩，在我喜歡吃浮游生可以聊聊嗎? 恩，在我喜歡吃浮游生物可以恩，在我喜歡吃浮游生物可以</div>
+              <div class="pos-a loc-6"><div class="badge badge-brand">1</div></div>
+            </div>
+            <div class="form-desc">你可以主動回覆訊息</div>
+          </div>
 
-            <div class="box ch-gy-3">
-              <div class="ch-gy-2">
-                <div><b class="fs-label c-text1 me-3">日期</b> 2021/11/20~2021/11/23</div>
-                <div><b class="fs-label c-text1 me-3">津貼NT$</b> 2000</div>
+          <div class="section-blockLine">
+            <div class="flex-center-a">
+              <div class="me-3">
+                <div class="avatar avatar-white" style="background-image: url(/static/common/img/avatar/3.jpg)"></div>
               </div>
-              <div>
-                <button class="btn btn-brand-ol">通知對方，可重新邀約~</button>
+              <div class="d-flex flex-column ch-gy-2">
+                <div><b>王子的花生</b></div>
+                <div class="img-text fw-bold"><img src="/static/common/img/svg/heart.svg">獲得 100</div>
               </div>
             </div>
-
-            <div class="fs-14 c-text1">2021/11/20 12:00:00</div>
+            <div class="pos-r">
+              <div class="text-more pe-5">喔~ 是喔 小魚小魚你喜歡吃什麼?</div>
+              <div class="pos-a loc-6"></div>
+            </div>
           </div>
 
         </div>
       </div>
     </main>
-
-<!-- ### component/modal-heart.html ### -->
-    <div id="comp-modal-heart">
-      <script>$.get('/templates/component/modal-heart.html', (res)=>{ $('#comp-modal-heart')[0].outerHTML=res } )</script>
-    </div>
-<!-- ### component/modal-heart.html /END ### -->
 
     <div id="modal">
       <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>

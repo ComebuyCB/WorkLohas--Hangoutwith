@@ -54,13 +54,13 @@
           </div>
         </nav>
 
-        <div class="ch-gy-5 max-w-660 mt-5">
+        <div class="ch-gy-4 max-w-660 mt-lg-3">
           <div class="section-blockLine">
-            <div class="flex-center-a">
-              <div class="me-3">
-                <div class="avatar avatar-white avatar-sm" style="background-image: url(/static/common/img/avatar/4.jpg)"></div>
+            <div class="flex-center-a ch-gx-3">
+              <div>
+                <div class="avatar avatar-white" style="background-image: url(/static/common/img/avatar/4.jpg)"></div>
               </div>
-              <div class="d-flex flex-column">
+              <div class="ch-gy-1">
                 <div><b>動森小廚神 🐣 小菜雞</b> 提出邀約</div>
                 <div>自由業 • 請客</div>
               </div>
@@ -71,7 +71,9 @@
               </div>
             </div>
             <div class="box ch-gy-3">
-              <a class="c-danger img-text a-link" href="javascript:" data-bs-toggle="modal" data-bs-target="#modal-123456789"><img src="/static/common/img/svg/Warning.svg" onload="SVGInject(this)">邀約時間重複，請擇一同意</a>
+              <a class="c-danger img-text a-link" href="javascript:" data-bs-toggle="modal" data-bs-target="#modal-conflict-00001">
+                <img src="/static/common/img/svg/Warning.svg" onload="SVGInject(this)"><span>邀約時間重複，請擇一同意</span>
+              </a>
               <div class="ch-gy-2">
                 <div><b class="fs-label c-text1 me-3">日期</b> 2021/11/20~2021/11/23</div>
                 <div><b class="fs-label c-text1 me-3">津貼NT$</b> 2000</div>
@@ -84,11 +86,11 @@
           </div>
 
           <div class="section-blockLine">
-            <div class="flex-center-a">
-              <div class="me-3">
-                <div class="avatar avatar-white avatar-sm" style=""></div>
+            <div class="flex-center-a ch-gx-3">
+              <div>
+                <div class="avatar avatar-white" style=""></div>
               </div>
-              <div class="d-flex flex-column">
+              <div class="ch-gy-1">
                 <div><b>武東興</b> 提出邀約</div>
                 <div>自由業 • 請客</div>
               </div>
@@ -114,8 +116,7 @@
         </div>
       </div>
 
-
-      <div class="modal modal-page fade" id="modal-123456789" data-bs-backdrop="static">
+      <div class="modal modal-page fade" id="modal-conflict-00001" data-bs-backdrop="static">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-body">
@@ -130,7 +131,7 @@
                 <div class="col-12 col-lg-6">
                   <div class="flex-center-a">
                     <div class="me-3">
-                      <div class="avatar avatar-white avatar-sm" style="background-image: url(/static/common/img/avatar/4.jpg)"></div>
+                      <div class="avatar avatar-white" style="background-image: url(/static/common/img/avatar/4.jpg)"></div>
                     </div>
                     <div class="d-flex flex-column">
                       <div><b>動森小廚神 🐣 小菜雞</b> 提出邀約</div>
@@ -151,7 +152,7 @@
                 <div class="col-12 col-lg-6">
                   <div class="flex-center-a">
                     <div class="me-3">
-                      <div class="avatar avatar-white avatar-sm" style=""></div>
+                      <div class="avatar avatar-white" style=""></div>
                     </div>
                     <div class="d-flex flex-column">
                       <div><b>動森小廚神 🐣 小菜雞</b> 提出邀約</div>
@@ -171,7 +172,7 @@
                 </div><div class="col-12 col-lg-6">
                   <div class="flex-center-a">
                     <div class="me-3">
-                      <div class="avatar avatar-white avatar-sm" style=""></div>
+                      <div class="avatar avatar-white" style=""></div>
                     </div>
                     <div class="d-flex flex-column">
                       <div><b>動森小廚神 🐣 小菜雞</b> 提出邀約</div>
@@ -195,8 +196,13 @@
         </div>
       </div>
 
-
     </main>
+
+<!-- ### component/modal-heart.html ### -->
+    <div id="comp-modal-heart">
+      <script>$.get('/templates/component/modal-heart.html', (res)=>{ $('#comp-modal-heart')[0].outerHTML=res } )</script>
+    </div>
+<!-- ### component/modal-heart.html /END ### -->
 
     <div id="modal">
       <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
