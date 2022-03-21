@@ -60,24 +60,15 @@
                 </div>
                 <div class="form-group">
                   <div class="form-label">生日</div>
-                  <div class="row g-2">
+                  <div class="row row-cols-3 gx-2">
                     <div class="col">
-                      <select class="form-select" name="">
-                        <option value="" disabled hidden selected>西元年</option>
-                        <option value="2022">2022</option>
-                      </select>
+                      <select id="birth_y" class="form-select"></select>
                     </div>
                     <div class="col">
-                      <select class="form-select" name="">
-                        <option value="" disabled hidden selected>月</option>
-                        <option value="1">1</option>
-                      </select>
+                      <select id="birth_m" class="form-select"></select>
                     </div>
                     <div class="col">
-                      <select class="form-select" name="">
-                        <option value="" disabled hidden selected>日</option>
-                        <option value="01">01</option>
-                      </select>
+                      <select id="birth_d" class="form-select"></select>
                     </div>
                   </div>
                 </div>
@@ -125,5 +116,11 @@
       <script>$.get('/templates/include/footer.html', (res)=>{ $('footer')[0].outerHTML=res } )</script>
     </footer>
   </div>
+  
+  <script>
+    $(function(){
+      select_birth('#birth_y', '#birth_m', '#birth_d')
+    })
+  </script>
 </body>
 </html>

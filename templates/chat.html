@@ -42,7 +42,7 @@
         <div class="chatBox">
           <div>
             <div class="page-header mb-0">
-              <button type="button" class="btn btn-white btn-round page-prev"></button>
+              <button type="button" class="btn btn-white btn-round page-prev" onclick="history.back()"></button>
               <h2 class="page-title">動森小廚神 🐣 小菜雞</h2>
               <div class="pos-a loc-9">
                 <button class="btn btn-brand-ol d-none d-lg-inline-flex">
@@ -87,8 +87,13 @@
           </div>
         </div>
       </div>
-
     </main>
+    
+<!-- ### component/modal-hangout.html ### -->
+    <div id="comp-modal-hangout">
+      <script>$.get('/templates/component/modal-hangout.html', (res)=>{ $('#comp-modal-hangout')[0].outerHTML=res } )</script>
+    </div>
+<!-- ### component/modal-hangout.html /END ### -->
 
     <div id="modal">
       <script>$.get('/templates/include/modal.html', (res)=>{ $('#modal')[0].outerHTML=res } )</script>
@@ -100,7 +105,7 @@
   </div>
   <script>
     // webSocket (Java Server + JavaScript Client)
-    // https://www.youtube.com/watch?v=_Fi4vz6oUio
+    // 影片教學: https://www.youtube.com/watch?v=_Fi4vz6oUio
     // 
     $(function(){
       scrollDown()

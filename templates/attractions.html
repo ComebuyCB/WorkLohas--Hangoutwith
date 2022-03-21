@@ -19,13 +19,17 @@
   <script src="/static/plugins/vue-2.6.12/vue.js"></script>
   <!-- 正式機 -->
   <!-- <script src="/static/plugins/vue-2.6.12/vue.min.js"></script> -->
-  <!-- <script src="/static/plugins/axios-0.21.1/axios.min.js"></script> -->
 
   <link href="/static/plugins/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet">
   <script src="/static/plugins/svg-inject-v1.2.3/svg-inject.min.js"></script>
 
   <link href="/static/plugins/Swiper-8.0.6/swiper-bundle.min.css" rel="stylesheet"/>
   <script src="/static/plugins/Swiper-8.0.6/swiper-bundle.min.js"></script>
+
+  <link href="/static/plugins/select2-4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="/static/plugins/select2-4.0.13/dist/js/select2.min.js"></script>
+  <link src="/static/plugins/select2-customSelectionAdapter/dist/css/select2.customSelectionAdapter.css" rel="stylesheet">
+  <script src="/static/plugins/select2-customSelectionAdapter/dist/js/select2.customSelectionAdapter.min.js"></script>
 
   <!-- main -->
   <link href="/static/common/css/main.css" rel="stylesheet">
@@ -39,17 +43,16 @@
     
     <main id="main">
       <div class="container">
-        <div class="mb-3 text-end">
-          <button class="btn btn-brand-ol img-text w-auto" data-bs-toggle="modal" data-bs-target="#modal-hobby">
-            <img src="/static/common/img/svg/Settings.svg" onload="SVGInject(this)"> 興趣偏好
-          </button>
-        </div>
+        <select id="select2-tags" class="form-control w-100 max-w-660 mx-auto" multiple="multiple">
+          <option v-for="value in tags" :value="value">{{value}}</option>
+        </select>
+        <div id="select2-tags-container" class="my-3 text-center"></div>
       </div>
       <div class="container sm_:px-0">
         <div class="row g-0 g-sm-3">
           <template v-for="(item,idx) in api.list">
-            <div :id="item.id" v-show="!item.del" class="col-6 col-lg-4">
-              <div class="pCard attraction" :class="item.fadeOut ? 'fadeOut' : ''">
+            <div :id="item.id" class="col-6 col-lg-4">
+              <div class="pCard attraction">
                 <div class="pCard-pic">
                   <div :id="'SwipeImage'+item.id" class="swiper swiper-container SwipeImage">
                     <div class="swiper-wrapper">
@@ -68,7 +71,7 @@
                     </div>
                   </div>
 
-                  <div class="pCard-pic-bot">
+                  <div class="pCard-pic-bottom">
                     <div class="d-flex justify-content-between">
                       <button class="btn btn-brand w-auto btn-lg_:round" @click="openModal_hangout(item)">
                         <img class="me-lg-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span class="lg_:none">Lets Hangout</span>
@@ -82,96 +85,6 @@
               </div>
             </div>
           </template>
-        </div>
-      </div>
-
-      <div class="modal fade" id="modal-hobby" data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="page-header">
-                <h2 class="page-title">興趣偏好設定</h2>
-                <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal" @click="default_hobby()"></button>
-              </div>
-              <div class="form-body">
-                <div class="form-group">透過興趣認識新朋友，交流分享生活點滴，立刻挑選興趣看誰願意和你來一個知性的交流。</div>
-                <div class="form-group">
-                  <label class="form-label">對象 (可複選)</label>
-                  <div class="ch-g-2">
-                    <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.partner" value="男">
-                      <div>
-                        <div>男</div>
-                      </div>
-                    </label>
-                    <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.partner" value="女">
-                      <div>
-                        <div>女</div>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">興趣</label>
-                  <div class="ch-g-2">
-                    <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Coffee Chat">
-                      <div>
-                        <div class="img-text">
-                          <img src="/static/common/img/svg/coffee.svg"> Coffee Chat
-                        </div>
-                      </div>
-                    </label>
-                    <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Outdoor activity">
-                      <div>
-                        <div class="img-text">
-                          <img src="/static/common/img/svg/tree.svg"> Outdoor activity
-                        </div>
-                      </div>
-                    </label>
-                    <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Movie Time">
-                      <div>
-                        <div class="img-text">
-                          <img src="/static/common/img/svg/movie.svg"> Movie Time
-                        </div>
-                      </div>
-                    </label>
-                    <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="KTV Super Idol">
-                      <div>
-                        <div class="img-text">
-                          <img src="/static/common/img/svg/microphone.svg"> KTV Super Idol
-                        </div>
-                      </div>
-                    </label>
-                    <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Foodie">
-                      <div>
-                        <div class="img-text">
-                          <img src="/static/common/img/svg/foodie.svg"> Foodie
-                        </div>
-                      </div>
-                    </label>
-                    <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Concert">
-                      <div>
-                        <div class="img-text">
-                          <img src="/static/common/img/svg/concert.svg"> Concert
-                        </div>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-  
-                <div class="form-foot">
-                  <button type="button" class="btn btn-brand">儲存</button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </main>
@@ -200,14 +113,8 @@
     new Vue({
       el: '#main',
       data: {
-        ori_hobbySetting: {
-          partner: ['女'],
-          hobby: ['Coffee Chat', 'Concert']
-        },
-        hobbySetting: {
-          partner: [],
-          hobby: [],
-        },
+        tags: ['Coffee Chat', 'KTV Super Idol', 'Outdoor activity'],
+        tagsSelected: [],
         api: {
           list: [ ]
         },
@@ -219,9 +126,17 @@
       },
       mounted() {
         let This = this
-
-        This.default_hobby()
-        This.bsModal_hobby = new bootstrap.Modal( document.getElementById('modal-hobby') ),
+        // select2 擴充元件: customSelectionAdapter
+        var CustomSelectionAdapter = $.fn.select2.amd.require("select2/selection/customSelectionAdapter")
+        $("#select2-tags").select2({
+          tags: true,
+          placeholder: '請選擇',
+          selectionAdapter: CustomSelectionAdapter,
+          selectionContainer: $('#select2-tags-container')
+        })
+        .on('change', function() {
+          This.changesTags()
+        }).trigger('change')
 
         This.ajaxNewList()
         // 往下滑列出新的data
@@ -241,13 +156,7 @@
         //   array.splice( index, 1 )
         // },
         createSwipers( id ){
-          new Swiper('#SwipeBadge' + id, {
-            slidesPerView: 'auto',
-            autoplay: true,
-            spaceBetween: 15,
-          })
-
-          new Swiper('#SwipeImage' + id, {
+          var swiper = new Swiper('#SwipeImage' + id, {
             on: {
               beforeInit: ()=>{
                 $.each( $('.SwipeImage'), (idx, ele) => {
@@ -274,21 +183,23 @@
           let This = this
           if ( !This.fetching ){
             This.fetching = true
-            $.get('/', (resData)=>{
+            console.log( `送出url?: (${This.tagsSelected})`)
+            $.get('/', (resData) => {
               let randomId = new Date().getTime()
               resData = [
-                { id: randomId + 0, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], },
-                { id: randomId + 1, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/500'], },
+                { id: randomId + 0, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400','https://picsum.photos/500'], },
+                { id: randomId + 1, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/700','https://picsum.photos/600'], },
                 { id: randomId + 2, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/600'], },
                 { id: randomId + 3, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/700'], },
                 { id: randomId + 4, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/800'], },
                 { id: randomId + 5, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/900'], },
+                { id: randomId + 6, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1000'], },
+                { id: randomId + 7, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1100'], },
+                { id: randomId + 8, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1200'], },
+                { id: randomId + 9, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1300'], },
+                { id: randomId + 10, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1400'], },
+                { id: randomId + 11, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1500'], },
               ]
-  
-              resData.forEach( obj => {
-                obj['del'] = false
-                obj['fadeOut'] = false
-              })
   
               This.api.list.push( ...resData )
   
@@ -303,8 +214,10 @@
             })
           }
         },
-        default_hobby(){
-          this.hobbySetting = { ...this.ori_hobbySetting }
+        changesTags(){
+          this.tagsSelected = $("#select2-tags").select2('data').map( item => item.id )
+          this.api.list = []
+          this.ajaxNewList()
         },
         openModal_heart( item ){
           openModal_heart( item.id, item.heartISent )

@@ -163,6 +163,11 @@
       .swiper-wrapper.disabled { transform: translate3d(0px, 0, 0) !important;}
 
 
+    /*=== select2 ===*/
+
+
+
+
 
   /*====== [Plugins SelfMade] ======*/
     /*=== js-input-eye ===*/
@@ -230,10 +235,12 @@
 
     /*=== typesetting ===*/
       @media( max-width: 991.98px ){
+        .lg_\:d-none { display: none !important; }
         .lg_\:p-0 { padding: 0 !important; }
         .lg_\:px-0 { padding-left: 0 !important; padding-right: 0 !important; }
       }
       @media( max-width: 575.98px ){
+        .sm_\:d-none { display: none !important; }
         .sm_\:p-0 { padding: 0 !important; }
         .sm_\:px-0 { padding-left: 0 !important; padding-right: 0 !important; }
       }
@@ -331,7 +338,6 @@
       .fs-14 { font-size: var(--h5); }
 
       .lh-1 { line-height: 1; }
-      .lh-1\.2 { line-height: 1.2; }
       .lh-1\.8 { line-height: 1.8; }
       .lh-2 { line-height: 2; }
       .text-more { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -527,15 +533,15 @@
         .pCard { border: solid 1px var(--border); border-radius: var(--gap-3); overflow: hidden; transition: opacity .3s; }
         .pCard-pic { position: relative; }
         .pCard-pic-top { position: absolute; top: 0; z-index: 2; padding: 16px; width: 100%; color: white; background: linear-gradient(to top, transparent 0%, rgba(0,0,0,0.5) 100%); }
-        .pCard-pic-bot { position: absolute; bottom: 0; z-index: 2; padding: 16px; width: 100%; color: white; background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%); }
+        .pCard-pic-bottom { position: absolute; bottom: 0; z-index: 2; padding: 16px; width: 100%; color: white; background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%); }
         .pCard-pic-close { position: absolute; top: 0; right: 0; z-index: 2; padding: 16px; }
         .pCard-badge { display: flex; align-items: center; font-size: var(--h5); font-weight: bold; background-color: var(--rgba-white); color: var(--white); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 16px; user-select: none; }
-        .pCard-bot { padding: 16px; }
+        .pCard-bottom { padding: 16px; }
         .pCard.fadeOut { opacity: 0; }
         @media ( max-width: 575.98px ){
           .pCard.attraction { border: 0; border-radius: 0; }
         }
-        
+
 
       /*=== custom-table ===*/
         .custom-table { width: 100%; }
@@ -553,13 +559,12 @@
 
 
 
-
 /*######### [Pages] #########*/
   /*====== [Include Pages] ======*/
     /*=== header.html ===*/
       header { position: sticky; display: flex; top: 0; left: 0; right: 0; height: 62px; z-index: 30; background-color: var(--white); border-bottom: 1px solid var(--border); }
       @media ( min-width: 992px ){
-
+        header .header-min-w-lg-250 { min-width: 250px; }
       }
       .header-link { position: relative; color: var(--text-2); font-weight: bold; }
       .header-link::after { content: ''; position: absolute; width: 18px; height: 2px; bottom: 0; left: 50%; transform: translateX(-50%); transition: .15s background-color ease-in-out; }
@@ -649,6 +654,20 @@
       .chat-dialog2.me > .chat-dialog--msg { background-color: var(--text-2); color: white; border-bottom-right-radius: 0; }
       .chat-dialog2.you > .chat-dialog--msg { background-color: var(--white); color: var(--dark); border-bottom-left-radius: 0; }
 
+
+    /*=== attraction ===*/
+      .select2-container .select2-selection--multiple .select2-selection__rendered { display: block; padding: 0; }
+      #select2-tags + .select2-container { width: 100% !important; max-width: 660px; display: block; margin: auto; }
+      #select2-tags + .select2-container .select2-search--inline .select2-search__field { min-height: 46px; padding: 10px 16px; border-color: var(--border); border-radius: 16px; width: 100% !important; margin-top: 0; }
+    
+      #select2-tags-container .select2-container .select2-selection--multiple { min-height: 0; }
+      #select2-tags-container .select2-container .select2-selection { border: 0; }
+      #select2-tags-container .select2-container--default .select2-selection--multiple .select2-selection__choice { display: flex; font-weight: bold; padding: 8px 16px; border-radius: 16px; border: solid 2px var(--border); background-color: #fff; margin-right: .5rem; }
+      #select2-tags-container .select2-container--default .select2-selection--multiple .select2-selection__choice__remove { order: 99; color: var(--dark); margin: 0 0 0 8px; }
+
+
+      .three-avatars-container .row { justify-content: center; width: 40px; padding-top: 12px; }
+      .three-avatars-container .row .avatar { padding: 0; border: 0; width: 24px; height: 24px; margin-top: -8px; }
 
     @media( min-width: 576px ){}
     @media( min-width: 768px ){}

@@ -115,51 +115,11 @@
     </footer>
 
   </div>
+  
   <script>
     $(function(){
       select_birth('#birth_y', '#birth_m', '#birth_d')
     })
-
-    function select_birth( yearId, monthId, dateId ){
-      let yearStart = new Date().getFullYear() - 120
-
-      // 年 ( yearStart ~ 今年 )
-      for (let i = new Date().getFullYear(); i >= yearStart; i--) {
-        $(yearId).append(`<option value="${i}">${i}</option>`)
-      }
-
-      // 月 ( 1 ~ 12 )
-      for (let i = 1; i <= 12; i++) {
-        $(monthId).append(`<option value="${i}">${i}</option>`)
-      }
-      
-      toChangeDate()
-      $(yearId).change(toChangeDate)
-      $(monthId).change(toChangeDate)
-
-      // 年、月選單改變時
-      function toChangeDate() {
-        if ( $(yearId).val() != -1 && $(monthId).val() != -1 ) {
-          let lastDate = new Date( $(yearId).val(), $(monthId).val(), 0).getDate()
-
-          // 移除超過此月份的天數
-          $(dateId).children('option').each( function() {
-            if ( $(this).val() != -1 && $(this).val() > lastDate){
-              $(this).remove()
-            }
-          })
-
-          // 加入此月份的天數
-          for (let i = 1; i <= lastDate; i++) {
-            if ( !$(dateId).children(`option[value=${i}]`).length ) {
-              $(dateId).append(`<option value="${i}">${i}</option>`)
-            }
-          }
-        } else {
-          $(dateId).children('option:selected').removeAttr('selected')
-        }
-      }
-    }
   </script>
 </body>
 </html>
