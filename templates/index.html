@@ -210,7 +210,7 @@
                     <div class="form-group">
                       <div class="flex-center-a ch-gx-3">
                         <button type="button" class="btn btn-white btn-round" onclick="addHeart('-')"><img src="/static/common/img/svg/Minus.svg"></button>
-                        <input id="heart-input" type="number" class="form-control" oninput="currentHeart()" value="1" style="width: 100px">
+                        <input type="number" class="form-control" name="heart_input" oninput="currentHeart()" value="1" style="width: 100px">
                         <button type="button" class="btn btn-white btn-round" onclick="addHeart('+')"><img src="/static/common/img/svg/Plus.svg"></button>
                       </div>
                     </div>
@@ -224,7 +224,7 @@
                   </div>
                 </div>
                 <div class="form-foot">
-                  <button type="button" class="btn btn-brand">送出</button>
+                  <button type="button" class="btn btn-brand" onclick="submitModal_heart()">送出</button>
                 </div>
               </div>
             </div>
@@ -237,15 +237,14 @@
       var heart = {
         id: '',
         input: 1,
-        iSent: 1,
+        iSent: 0,
         message: 0,
       }
-      var bsModal_heart = new bootstrap.Modal( document.getElementById('modal-heart') )
       function openModal_heart( id, heartISent = 0 ){
         heart.id = id
         heart.iSent = heartISent
         show_HeartMessageSection()
-        bsModal_heart.show()
+        $('#modal-heart').modal('show')
       }
       function currentHeart(){
         let value = +$('[name=heart_input]').val()
@@ -289,7 +288,7 @@
             }
           break;
         }
-        $('#heart-input').val( heart.input )
+        $('[name=heart_input]').val( heart.input )
         currentHeart()
       }
       function submitModal_heart(){
@@ -299,7 +298,7 @@
         $.get('/',()=>{ // post
           alert('請看console')
           console.log( heart )
-          bsModal_heart.hide()
+          $('#modal-heart').modal('hide')
           initHeart()
         })
       }
@@ -473,30 +472,27 @@
         allowance: 0,
         coupon: 0,
       }
-      var bsModal_hangout_step1 = new bootstrap.Modal( document.getElementById('modal-hangout-step1') )
-      var bsModal_hangout_step2 = new bootstrap.Modal( document.getElementById('modal-hangout-step2') )
-      var bsModal_hangout_step3 = new bootstrap.Modal( document.getElementById('modal-hangout-step3') )
-
+    
       function openModal_hangout1( id ){
         hangout.id = id
-        bsModal_hangout_step2.hide()
+        $('#modal-hangout-step2').modal('hide')
         let sto = setTimeout(()=>{
-          bsModal_hangout_step1.show()
+          $('#modal-hangout-step1').modal('show')
           clearTimeout(sto)
         })
       }
       function openModal_hangout2(){
-        bsModal_hangout_step1.hide()
-        bsModal_hangout_step3.hide()
+        $('#modal-hangout-step1').modal('hide')
+        $('#modal-hangout-step3').modal('hide')
         let sto = setTimeout(()=>{
-          bsModal_hangout_step2.show()
+          $('#modal-hangout-step2').modal('show')
           clearTimeout(sto)
         })
       }
       function openModal_hangout3(){
-        bsModal_hangout_step2.hide()
+        $('#modal-hangout-step2').modal('hide')
         let sto = setTimeout(()=>{
-          bsModal_hangout_step3.show()
+          $('#modal-hangout-step3').modal('show')
           clearTimeout(sto)
         })
       }
@@ -521,11 +517,11 @@
         hangout.payType = $('[name=hangout_payType]:checked').val()
         hangout.allowance = +$('[name=hangout_allowance]').val()
         hangout.coupon = $('[name=hangout_coupon]').val()
-
+    
         $.get('/',()=>{ // post
           alert('請看console')
           console.log( hangout )
-          bsModal_hangout_step3.hide()
+          $('#modal-hangout-step3').modal('hide')
           initHangout()
         })
       }
@@ -578,12 +574,6 @@
       computed: {
       },
       methods: {
-        // appendItem( array, itemFormat = {} ){
-        //   array.push( itemFormat )
-        // },
-        // deleteItem( array, index ){
-        //   array.splice( index, 1 )
-        // },
         removeCard( event, index ){
           let This = this
           This.api.list[index].fadeOut = true

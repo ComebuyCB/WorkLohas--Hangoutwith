@@ -164,30 +164,27 @@
     allowance: 0,
     coupon: 0,
   }
-  var bsModal_hangout_step1 = new bootstrap.Modal( document.getElementById('modal-hangout-step1') )
-  var bsModal_hangout_step2 = new bootstrap.Modal( document.getElementById('modal-hangout-step2') )
-  var bsModal_hangout_step3 = new bootstrap.Modal( document.getElementById('modal-hangout-step3') )
 
   function openModal_hangout1( id ){
     hangout.id = id
-    bsModal_hangout_step2.hide()
+    $('#modal-hangout-step2').modal('hide')
     let sto = setTimeout(()=>{
-      bsModal_hangout_step1.show()
+      $('#modal-hangout-step1').modal('show')
       clearTimeout(sto)
     })
   }
   function openModal_hangout2(){
-    bsModal_hangout_step1.hide()
-    bsModal_hangout_step3.hide()
+    $('#modal-hangout-step1').modal('hide')
+    $('#modal-hangout-step3').modal('hide')
     let sto = setTimeout(()=>{
-      bsModal_hangout_step2.show()
+      $('#modal-hangout-step2').modal('show')
       clearTimeout(sto)
     })
   }
   function openModal_hangout3(){
-    bsModal_hangout_step2.hide()
+    $('#modal-hangout-step2').modal('hide')
     let sto = setTimeout(()=>{
-      bsModal_hangout_step3.show()
+      $('#modal-hangout-step3').modal('show')
       clearTimeout(sto)
     })
   }
@@ -216,7 +213,7 @@
     $.get('/',()=>{ // post
       alert('請看console')
       console.log( hangout )
-      bsModal_hangout_step3.hide()
+      $('#modal-hangout-step3').modal('hide')
       initHangout()
     })
   }

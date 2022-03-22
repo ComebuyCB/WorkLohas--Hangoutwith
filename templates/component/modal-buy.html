@@ -1,5 +1,5 @@
 <div id="comp-modal-buy">
-  <div class="modal modal-bot fade" id="modal-step1" data-bs-backdrop="static">
+  <div class="modal modal-bot fade" id="modal-buy-step1" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-body">
@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="form-foot">
-              <button id="nextStep" type="button" class="btn btn-brand" :disabled="userSelected.buyType === ''" data-bs-toggle="modal" data-bs-target="#modal-step2">下一步</button>
+              <button id="nextStep" type="button" class="btn btn-brand" :disabled="userSelected.buyType === ''" data-bs-toggle="modal" data-bs-target="#modal-buy-step2">下一步</button>
             </div>
           </div>
         </div>
@@ -25,12 +25,12 @@
     </div>
   </div>
 
-  <div class="modal modal-bot fade" id="modal-step2" data-bs-backdrop="static" v-if="userSelected.buyType">
+  <div class="modal modal-bot fade" id="modal-buy-step2" data-bs-backdrop="static" v-if="userSelected.buyType">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-body">
           <div class="page-header">
-            <button type="button" class="btn btn-white btn-round page-prev" data-bs-toggle="modal" data-bs-target="#modal-step1" @click="clearUserSelected()"></button>
+            <button type="button" class="btn btn-white btn-round page-prev" data-bs-toggle="modal" data-bs-target="#modal-buy-step1" @click="clearUserSelected()"></button>
             <h2 class="page-title">{{ step2[userSelected.buyType].title }}</h2>
             <button type="button" class="btn btn-white btn-round page-close" data-bs-dismiss="modal" @click="clearUserSelected()"></button>
           </div>
@@ -137,6 +137,7 @@
         alert('請看console')
         let postData = JSON.parse(JSON.stringify( this.userSelected ))
         console.log( postData )
+        $('#modal-buy-step2').modal('hide')
       }
     },
   })

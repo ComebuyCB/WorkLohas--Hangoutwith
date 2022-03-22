@@ -42,7 +42,7 @@
         <div class="max-w-660 mx-auto">
           <table class="table notification-table">
             <tbody>
-              <tr onclick="location.href='#12345'">
+              <tr onclick="location.href='/templates/invite/inviteMe.html'">
                 <td><img src="/static/common/img/svg/invite-me.svg" alt="invite me"></td>
                 <td>
                   <div class="ch-gy-3">
@@ -53,22 +53,22 @@
                 </td>
                 <td><i class="notification-dot"></i></td>
               </tr>
-              <tr>
+              <tr onclick="location.href='/templates/invite/meInvite-matched.html'">
                 <td><img src="/static/common/img/svg/invite-sent.svg" alt="invite sent"></td>
                 <td>
                   <div class="ch-gy-3">
-                    <div><a class="fw-b" href="#">動森小廚神 🐣 小菜雞</a> 已同意您的邀約</div>
+                    <div><a class="fw-b" href="#">一夜三枯八百里</a> 已同意您的邀約</div>
                     <div></div>
                     <div class="fs-14 c-text1">2021/11/20 12:00:00</div>
                   </div>
                 </td>
                 <td><i class="notification-dot"></i></td>
               </tr>
-              <tr>
+              <tr onclick="location.href='/templates/invite/meInvite-invalid.html'">
                 <td><img src="/static/common/img/svg/invite-sent.svg" alt="invite sent"></td>
                 <td>
                   <div class="ch-gy-3">
-                    <div><a class="fw-b" href="#">武東興</a> 已拒絕您的邀約</div>
+                    <div><a class="fw-b" href="#">一夜三枯八百里</a> 已拒絕您的邀約</div>
                     <div class="fs-14 c-text1">2021/11/20 12:00:00</div>
                   </div>
                 </td>
@@ -84,8 +84,9 @@
                 </td>
                 <td></td>
               </tr>
-              <tr>
-                <td><img src="/static/common/img/svg/Comment.svg" alt="invite sent"></td>
+              <!-- 若以match 前往chat.html / 若還沒則跳到 heartList-get.html -->
+              <tr onclick="location.href='/templates/chat.html'">
+                <td><img src="/static/common/img/svg/Comment.svg" alt="Comment"></td>
                 <td>
                   <div class="ch-gy-3">
                     <div><a class="fw-b" href="#">陳莉莉</a> 有新留言: <br>要不要出來玩</div>
@@ -94,8 +95,8 @@
                 </td>
                 <td></td>
               </tr>
-              <tr>
-                <td><img src="/static/common/img/svg/heart.svg" alt="invite sent"></td>
+              <tr onclick="location.href='/templates/heart/heartList-get.html'">
+                <td><img src="/static/common/img/svg/heart.svg" alt="heart"></td>
                 <td>
                   <div class="ch-gy-3">
                     <div><a class="fw-b" href="#">陳莉莉</a> 送了 100 顆愛心<br></div>

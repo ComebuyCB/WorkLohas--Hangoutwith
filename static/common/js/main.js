@@ -242,13 +242,14 @@ $(document).on('click','.js-eye',function(){
   }
 })
 
+function _alert( content='', btn='', fn=function(){} ){
+  $('#modal-alert').find('.js-alert-content').html( content )
+  $('#modal-alert').find('.js-alert-close-btn').text(`${btn = btn ? btn : '關閉'}`)
+  $('#modal-alert').one('hide.bs.modal', function() { fn() })
+  $('#modal-alert').modal('show')
+}
 
-$('.modal-page').on('show.bs.modal', function(){
-  $('.modal-backdrop').remove()
-})
-
-
-$( function () {
+$(function () {
   $('body').on('show.bs.modal', '.modal-page', function (e) {
     let classList = Object.values( $(this)[0].classList )
     let backdrop = classList.find( item => item.indexOf('modal-page') > -1 )
@@ -270,5 +271,4 @@ $( function () {
   $('body').on('hidden.bs.modal', '.modal-bot', function (e) {
     $('body').css('overflow','')
   })
-
 })

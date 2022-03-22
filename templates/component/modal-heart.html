@@ -17,7 +17,7 @@
                 <div class="form-group">
                   <div class="flex-center-a ch-gx-3">
                     <button type="button" class="btn btn-white btn-round" onclick="addHeart('-')"><img src="/static/common/img/svg/Minus.svg"></button>
-                    <input id="heart-input" type="number" class="form-control" oninput="currentHeart()" value="1" style="width: 100px">
+                    <input type="number" class="form-control" name="heart_input" oninput="currentHeart()" value="1" style="width: 100px">
                     <button type="button" class="btn btn-white btn-round" onclick="addHeart('+')"><img src="/static/common/img/svg/Plus.svg"></button>
                   </div>
                 </div>
@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="form-foot">
-              <button type="button" class="btn btn-brand">送出</button>
+              <button type="button" class="btn btn-brand" onclick="submitModal_heart()">送出</button>
             </div>
           </div>
         </div>
@@ -47,12 +47,11 @@
     iSent: 1,
     message: 0,
   }
-  var bsModal_heart = new bootstrap.Modal( document.getElementById('modal-heart') )
   function openModal_heart( id, heartISent = 0 ){
     heart.id = id
     heart.iSent = heartISent
     show_HeartMessageSection()
-    bsModal_heart.show()
+    $('#modal-heart').modal('show')
   }
   function currentHeart(){
     let value = +$('[name=heart_input]').val()
@@ -96,7 +95,7 @@
         }
       break;
     }
-    $('#heart-input').val( heart.input )
+    $('[name=heart_input]').val( heart.input )
     currentHeart()
   }
   function submitModal_heart(){
@@ -106,7 +105,7 @@
     $.get('/',()=>{ // post
       alert('請看console')
       console.log( heart )
-      bsModal_heart.hide()
+      $('#modal-heart').modal('hide')
       initHeart()
     })
   }
