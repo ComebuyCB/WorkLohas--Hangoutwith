@@ -113,13 +113,13 @@
                   <label class="form-label">對象 (可複選)</label>
                   <div class="ch-g-2">
                     <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.partner" value="男">
+                      <input type="checkbox" v-model="myHobbySelected.partner" value="男">
                       <div>
                         <div>男</div>
                       </div>
                     </label>
                     <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.partner" value="女">
+                      <input type="checkbox" v-model="myHobbySelected.partner" value="女">
                       <div>
                         <div>女</div>
                       </div>
@@ -130,7 +130,7 @@
                   <label class="form-label">興趣</label>
                   <div class="ch-g-2">
                     <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Coffee Chat">
+                      <input type="checkbox" v-model="myHobbySelected.hobby" value="Coffee Chat">
                       <div>
                         <div class="img-text">
                           <img src="/static/common/img/svg/coffee.svg"> Coffee Chat
@@ -138,7 +138,7 @@
                       </div>
                     </label>
                     <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Outdoor activity">
+                      <input type="checkbox" v-model="myHobbySelected.hobby" value="Outdoor activity">
                       <div>
                         <div class="img-text">
                           <img src="/static/common/img/svg/tree.svg"> Outdoor activity
@@ -146,7 +146,7 @@
                       </div>
                     </label>
                     <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Movie Time">
+                      <input type="checkbox" v-model="myHobbySelected.hobby" value="Movie Time">
                       <div>
                         <div class="img-text">
                           <img src="/static/common/img/svg/movie.svg"> Movie Time
@@ -154,7 +154,7 @@
                       </div>
                     </label>
                     <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="KTV Super Idol">
+                      <input type="checkbox" v-model="myHobbySelected.hobby" value="KTV Super Idol">
                       <div>
                         <div class="img-text">
                           <img src="/static/common/img/svg/microphone.svg"> KTV Super Idol
@@ -162,7 +162,7 @@
                       </div>
                     </label>
                     <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Foodie">
+                      <input type="checkbox" v-model="myHobbySelected.hobby" value="Foodie">
                       <div>
                         <div class="img-text">
                           <img src="/static/common/img/svg/foodie.svg"> Foodie
@@ -170,7 +170,7 @@
                       </div>
                     </label>
                     <label class="ckb ckbBox ckbHide">
-                      <input type="checkbox" v-model="hobbySetting.hobby" value="Concert">
+                      <input type="checkbox" v-model="myHobbySelected.hobby" value="Concert">
                       <div>
                         <div class="img-text">
                           <img src="/static/common/img/svg/concert.svg"> Concert
@@ -181,7 +181,7 @@
                 </div>
   
                 <div class="form-foot">
-                  <button type="button" class="btn btn-brand">儲存</button>
+                  <button type="button" class="btn btn-brand" @click="submitHobby()">儲存</button>
                 </div>
               </div>
             </div>
@@ -536,15 +536,16 @@
       <script>$.get('/templates/include/footer.html', (res)=>{ $('footer')[0].outerHTML=res } )</script>
     </footer>
   </div>
+
   <script>
     new Vue({
       el: '#main',
       data: {
-        ori_hobbySetting: {
+        myHobby: {
           partner: ['女'],
           hobby: ['Coffee Chat', 'Concert']
         },
-        hobbySetting: {
+        myHobbySelected: {
           partner: [],
           hobby: [],
         },
@@ -552,17 +553,13 @@
           list: [ ]
         },
         fetching: false,
-        bsModal_hobby: null,
       },
       beforeMount() {
         history.scrollRestoration = "manual" // 瀏覽器重整時，禁止記憶自動往下捲
       },
       mounted() {
         let This = this
-
         This.default_hobby()
-        This.bsModal_hobby = new bootstrap.Modal( document.getElementById('modal-hobby') ),
-
         This.ajaxNewList()
         // 往下滑列出新的data
         $(window).on('scroll', ()=>{
@@ -647,13 +644,18 @@
           }
         },
         default_hobby(){
-          this.hobbySetting = { ...this.ori_hobbySetting }
+          this.myHobbySelected = { ...this.myHobby }
         },
         openModal_heart( item ){
           openModal_heart( item.id, item.heartISent )
         },
         openModal_hangout( item ){
           openModal_hangout1( item.id )
+        },
+        submitHobby(){
+          alert('請看console')
+          let postData = JSON.parse(JSON.stringify( this.myHobbySelected ))
+          console.log( postData )
         }
       }
     })
