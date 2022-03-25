@@ -163,11 +163,6 @@
       .swiper-wrapper.disabled { transform: translate3d(0px, 0, 0) !important;}
 
 
-    /*=== select2 ===*/
-
-
-
-
 
   /*====== [Plugins SelfMade] ======*/
     /*=== js-input-eye ===*/
@@ -186,51 +181,11 @@
         .pos-r {position:relative !important;}
         .pos-f {position:fixed !important;}
 
-      /* display */
-        .d-n {display:none !important;}
-        .d-b {display:block !important;}
-        .d-f {display:flex !important;}
-        .d-if {display:inline-flex !important;}
-        .d-i {display:inline !important;}
-        .d-ib {display:inline-block !important;}
-
       /* font */
         .fw-n {font-weight:normal !important;}
         .fw-b {font-weight:bold !important;}
         .fw-br {font-weight:bolder !important;}
         .fw-lr {font-weight:lighter !important;}
-
-        .fs-n {font-style:normal !important;}
-        .fs-i {font-style:italic !important;}
-        .fs-o {font-style:oblique !important;}
-
-        .ta-l {text-align:left !important;}
-        .ta-c {text-align:center !important;}
-        .ta-r {text-align:right !important;}
-        .ta-j {text-align:justify !important;}
-
-        .whs-n {white-space:normal !important;}
-        .whs-nw {white-space:nowrap !important;}
-
-      /* flex */
-        .ai-b {align-items:baseline !important;}
-        .ai-c {align-items:center !important;}
-        .ai-fe {align-items:flex-end !important;}
-        .ai-fs {align-items:flex-start !important;}
-        .ai-s {align-items:stretch !important;}
-    
-        .as-a {align-self:auto !important;}
-        .as-b {align-self:baseline !important;}
-        .as-c {align-self:center !important;}
-        .as-fe {align-self:flex-end !important;}
-        .as-fs {align-self:flex-start !important;}
-        .as-s {align-self:stretch !important;}
-
-        .jc-c {justify-content:center !important;}
-        .jc-fe {justify-content:flex-end !important;}
-        .jc-fs {justify-content:flex-start !important;}
-        .jc-sa {justify-content:space-around !important;}
-        .jc-sb {justify-content:space-between !important;}
 
 
     /*=== typesetting ===*/
@@ -590,17 +545,6 @@
       .notification-table > tbody > tr > td:nth-child(2) { padding-left: 0; padding-right: 0; }
       .notification-table > tbody > tr > td:nth-child(3) { width: 56px; text-align: center; }
       .notification-table > tbody > tr > td:nth-child(3) > .notification-dot { display: flex; margin: auto; }
-
-
-      /* .notification-card-container { max-width: 660px; margin: 0 auto; }
-      .notification-card-container > .notification-card:not(:first-child) { border-top: 1px solid var(--border); }
-
-      .notification-card { display: flex; padding-top: 1rem; padding-bottom: 1rem; color: var(--dark); border-top: 1px solid var(--border); }
-      .notification-card > *:nth-child(1) { flex-shrink: 0; width: 56px; text-align: center; }
-      .notification-card > *:nth-child(2) { flex: 1; }
-      .notification-card > *:nth-child(3) { flex-shrink: 0; width: 56px; text-align: center; }
-      .notification-card > *:nth-child(1) > *, 
-      .notification-card > *:nth-child(3) > * { display: flex; margin: auto; } */
       
       .notification-dot { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; }
       .notification-dot::after { content: ''; display: block; width: 6px; height: 6px; border-radius: 12px; background: var(--brand); }
@@ -665,9 +609,9 @@
       #select2-tags-container .select2-container--default .select2-selection--multiple .select2-selection__choice { display: flex; font-weight: bold; padding: 8px 16px; border-radius: 16px; border: solid 2px var(--border); background-color: #fff; margin-right: .5rem; }
       #select2-tags-container .select2-container--default .select2-selection--multiple .select2-selection__choice__remove { order: 99; color: var(--dark); margin: 0 0 0 8px; }
 
-
       .three-avatars-container .row { justify-content: center; width: 40px; padding-top: 12px; }
       .three-avatars-container .row .avatar { padding: 0; border: 0; width: 24px; height: 24px; margin-top: -8px; }
+
 
     @media( min-width: 576px ){}
     @media( min-width: 768px ){}
