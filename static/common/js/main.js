@@ -161,3 +161,142 @@ function setWH(){
       }
     })
   }
+
+
+  class _CompressImage{
+    constructor(inputId,layoutId,args){
+        let def = {
+            inputId: inputId, // *<input type="file" id="(inputId)">
+            layoutId: layoutId, // *渲染圖片的地方
+            maxImg: 30, // 圖片最多幾張
+            validType: '', // 圖片副檔名限制
+            compress: true, // 是否壓縮圖片
+            maxWidth: 1200, // 壓縮最大寬
+            maxHeight: 1200, // 壓縮最大高
+            quality: 1, // 壓縮品質
+            render: ``,
+            
+            // 以下為class內部使用
+            trigger: null,  // 觸發的物件
+            img_idxId: 0, // 上傳了第幾張編號圖片(目的: 若刪除之前的圖片，會從最後圖的號碼繼續++，如system number概念)
+            multiple: false, // <input> 是否為多張
+        }
+        Object.assign(def,args)
+        Object.assign(this,def)
+        this.listeners()
+    }
+
+    listeners(){
+        let This = this
+        $('#'+this.inputId).off('click').on('click', function(){ // 按下加入圖片，刷新既有的input file，以免點到相同的圖片無法觸發onchange
+            this.value = "";
+        })
+        $('#'+this.inputId).off('change').on('change', function(){
+            This.trigger = this
+            if ( This.validImg(this) == true ){
+                $('body').append(`<div id="compressImg-backdrop" style="background: rgba(255,255,255,0.5); position: fixed; left: 0; top: 0; bottom: 0; right: 0; display: flex; align-items: center; justify-content: center; z-index: 10">
+                    圖片上傳中，請稍後... ( <span id="compressImg-nowNum">1</span> / <span id="compressImg-total">1</span> )
+                </div>`)
+                This.multiple = $(this).prop('multiple')
+                This.readImg( This.trigger )
+            }
+        });
+    }
+
+    validImg(self){
+        let This = this
+        if (self.files && self.files[0]) {
+            for (let i=0; i < self.files.length; i++ ){
+                if (!self.files[i].type.match('image\/')){ // 驗證圖片
+                    alert('檔案格式錯誤')
+                    return false
+                }
+                let vT = new RegExp('image\/('+This.validType+')')
+                if (!self.files[i].type.match(vT)){ // 驗證圖片格式
+                    alert('圖片格式需為: '+This.validType)
+                    return false
+                }
+            }
+            if ( This.maxImg && self.files.length + $('#'+This.layoutId + '> *').length > This.maxImg ){ // 驗證圖片數量
+                alert('圖片不得大於'+This.maxImg+'張')
+                return false
+            }
+        }
+        return true
+    }
+
+    readImg(self) {
+        let This = this
+        $('#compressImg-total').text( self.files.length )
+        if (self.files && self.files[0]) {
+            let fileIdx = 0
+            for (let i=0; i < self.files.length; i++ ){
+                if ( This.multiple ){
+                    $('#'+This.layoutId).append( This.render )
+                } else {
+                    $('#'+This.layoutId).html( This.render )
+                }
+                let reader = new FileReader()
+                reader.onload = function(){
+                    This.compressImg( this.result, self.files[i].type, function( base64, idx, blob ){
+                        $('#'+This.layoutId).find('.js-compressImg').eq(0)
+                            .removeClass('js-compressImg')
+                            .css('background-image',`url(${blob||base64})`)
+                            .attr('data-fancybox',This.layoutId)
+                            .attr('href',base64)
+                            .html(`<textarea hidden name="${This.inputId}[]">${base64}</textarea>`)
+                        
+                        $('#compressImg-nowNum').text( idx + 2 )
+                        if ( self.files.length === idx + 1 ){
+                            $('#compressImg-backdrop').remove()
+                        }
+                    }, fileIdx )
+                    fileIdx ++
+                }
+                reader.readAsDataURL(self.files[i]);
+            }
+            // console.log( self.files )
+        } else {
+            $('#compressImg-backdrop').remove()
+        }
+    }
+
+    compressImg( inputUrl, imgType, callback, img_index ){
+        let This = this
+        let img = new Image()
+        img.src = inputUrl
+        img.onload = function(){
+            if ( This.compress === true ){
+                // 預設按比例壓縮
+                let w = this.width
+                let h = this.height
+
+                if ( w > This.maxWidth ){
+                    let scale = w / This.maxWidth
+                    w = This.maxWidth
+                    h = h / scale
+                }
+                if ( h > This.maxHeight ){
+                    let scale = h / This.maxHeight
+                    h = This.maxHeight
+                    w = w / scale
+                }
+    
+                // 生成canvas
+                let canvas = document.createElement('canvas')
+                let ctx = canvas.getContext('2d')
+                canvas.width = w
+                canvas.height = h
+                ctx.drawImage(this, 0, 0, w, h)
+    
+                let base64 = canvas.toDataURL( imgType ? imgType : 'image/jpeg', This.quality )
+                canvas.toBlob( blob => { 
+                  let blobUrl = URL.createObjectURL(blob)
+                  callback( base64, img_index, blobUrl ) // 回撥函式返回base64的值
+                })
+            } else {
+                callback( inputUrl, img_index )
+            }
+        }
+    }
+  }

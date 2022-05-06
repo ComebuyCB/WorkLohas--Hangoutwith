@@ -490,7 +490,7 @@
         .pCard-pic-top { position: absolute; top: 0; z-index: 2; padding: 16px; width: 100%; color: white; background: linear-gradient(to top, transparent 0%, rgba(0,0,0,0.5) 100%); }
         .pCard-pic-bottom { position: absolute; bottom: 0; z-index: 2; padding: 16px; width: 100%; color: white; background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%); }
         .pCard-pic-close { position: absolute; top: 0; right: 0; z-index: 2; padding: 16px; }
-        .pCard-badge { display: flex; align-items: center; font-size: var(--h5); font-weight: bold; background-color: var(--rgba-white); color: var(--white); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 16px; user-select: none; }
+        .pCard-badge { display: flex; align-items: center; font-size: var(--h5); font-weight: bold; padding: 4px 8px; border: solid 1px var(--border); border-radius: 16px; user-select: none; }
         .pCard-bottom { padding: 16px; }
         .pCard.fadeOut { opacity: 0; }
         @media ( max-width: 575.98px ){

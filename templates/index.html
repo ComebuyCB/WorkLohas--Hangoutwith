@@ -66,25 +66,31 @@
                   </div>
 
                   <div class="pCard-pic-bottom">
-                    <div class="ch-gy-2">
-                      <div :id="'SwipeBadge'+item.id" class="swiper swiper-container SwipeBadge">
-                        <div class="swiper-wrapper">
-                          <div v-for="hobby in item.hobby" class="swiper-slide w-auto">
-                            <div class="pCard-badge">{{hobby}}</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="fs-h3 text-more">{{item.name}}</div>
-                      <div class="fs-label flex-center-a ch-gx-3">
-                        <div class="img-text"><img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span>{{item.age}}，{{item.county}}</span></div>
-                        <div class="img-text"><img src="/static/common/img/svg/heart.svg" class="svg20" onload="SVGInject(this)"><span>{{item.heart}}</span></div>
-                      </div>
+                    <div class="d-flex justify-content-end">
+                      <a class="text-end" v-if="item.igLink" :href="item.igLink">
+                        <img src="/static/common/img/svg/ig.svg" onload="SVGInject(this)">
+                      </a>
                     </div>
                   </div>
                 </div>
 
                 <div class="pCard-bottom">
-                  <div class="d-flex justify-content-between">
+                  <div class="ch-gy-2">
+                    <div :id="'SwipeBadge'+item.id" class="swiper swiper-container SwipeBadge">
+                      <div class="swiper-wrapper">
+                        <div v-for="hobby in item.hobby" class="swiper-slide w-auto">
+                          <div class="pCard-badge">{{hobby}}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fs-h3 text-more">{{item.name}}</div>
+                    <div class="fs-label flex-center-a ch-gx-3">
+                      <div class="img-text"><img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span>{{item.age}}，{{item.county}}</span></div>
+                      <div class="img-text"><img src="/static/common/img/svg/heart.svg" class="svg20"><span>{{item.heart}}</span></div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between mt-3">
                     <button class="btn btn-brand w-auto" @click="openModal_hangout(item)">
                       <img class="me-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)">Lets Hangout
                     </button>
@@ -583,7 +589,7 @@
           new Swiper('#SwipeBadge' + id, {
             slidesPerView: 'auto',
             autoplay: true,
-            spaceBetween: 15,
+            spaceBetween: 8,
           })
 
           new Swiper('#SwipeImage' + id, {
@@ -616,13 +622,13 @@
             $.get('/', (resData)=>{
               let randomId = new Date().getTime()
               resData = [
-                { id: randomId + 0, name: '動森小廚神 🐣 小菜雞(3圖90心)', age: 22, county: '台北市', heart: 1000, heartISent: 150, hobby: ['Coffee Elite', 'Concert', 'Movie star'], avatar: ['/static/common/img/avatar/2.jpg','/static/common/img/avatar/3.jpg','/static/common/img/avatar/4.jpg'],},
-                { id: randomId + 1, name: '一夜三枯八百里(2圖50心)', age: 26,  county: '台中市', heartISent: 50, heart: 600, hobby: ['Concert', 'Movie star'], avatar: ['/static/common/img/avatar/0.jpg','/static/common/img/avatar/1.jpg'], },
-                { id: randomId + 2, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], },
-                { id: randomId + 3, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], },
-                { id: randomId + 4, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], },
-                { id: randomId + 5, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], },
-                { id: randomId + 6, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], },
+                { id: randomId + 0, name: '動森小廚神 🐣 小菜雞(3圖150心)', age: 22, county: '台北市', heartISent: 150, heart: 1000, hobby: ['Coffee Elite', 'Concert', 'Movie star'], avatar: ['/static/common/img/avatar/2.jpg','/static/common/img/avatar/3.jpg','/static/common/img/avatar/4.jpg'], igLink: 'https://www.instagram.com/', },
+                { id: randomId + 1, name: '一夜三枯八百里(2圖50心)', age: 26,  county: '台中市', heartISent: 50, heart: 600, hobby: ['Concert', 'Movie star'], avatar: ['/static/common/img/avatar/0.jpg','/static/common/img/avatar/1.jpg'], igLink: 'https://www.instagram.com/', },
+                { id: randomId + 2, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], igLink: '', },
+                { id: randomId + 3, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], igLink: '', },
+                { id: randomId + 4, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], igLink: '', },
+                { id: randomId + 5, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], igLink: '', },
+                { id: randomId + 6, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400'], igLink: '', },
               ]
   
               resData.forEach( obj => {

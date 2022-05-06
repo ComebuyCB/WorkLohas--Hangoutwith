@@ -63,23 +63,23 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                   </div>
+                  <a class="pos-a loc-3 p-3 text-white" style="z-index: 1" v-if="item.igLink" :href="item.igLink">
+                    <img src="/static/common/img/svg/ig.svg" onload="SVGInject(this)">
+                  </a>
+                </div>
 
-                  <div class="pCard-pic-top">
-                    <div class="ch-gy-2">
-                      <div class="fs-h3 text-more">{{item.name}}</div>
-                      <div class="img-text"><img src="/static/common/img/svg/heart.svg" class="svg20" onload="SVGInject(this)"><span>{{item.heart}}</span></div>
-                    </div>
+                <div class="pCard-bottom">
+                  <div class="ch-gy-2">
+                    <div class="fs-h3 text-more">{{item.name}}</div>
+                    <div class="img-text"><img src="/static/common/img/svg/heart.svg" class="svg20"><span>{{item.heart}}</span></div>
                   </div>
-
-                  <div class="pCard-pic-bottom">
-                    <div class="d-flex justify-content-between">
-                      <button class="btn btn-brand w-auto btn-lg_:round" @click="openModal_hangout(item)">
-                        <img class="me-lg-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span class="lg_:none">Lets Hangout</span>
-                      </button>
-                      <button class="btn btn-brand-rv btn-round" @click="openModal_heart(item)">
-                        <img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)">
-                      </button>
-                    </div>
+                  <div class="d-flex justify-content-between mt-3">
+                    <button class="btn btn-brand w-auto btn-lg_:round" @click="openModal_hangout(item)">
+                      <img class="me-lg-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span class="lg_:none">Lets Hangout</span>
+                    </button>
+                    <button class="btn btn-brand-rv btn-round" @click="openModal_heart(item)">
+                      <img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)">
+                    </button>
                   </div>
                 </div>
               </div>
@@ -181,18 +181,18 @@
             $.get('/', (resData) => {
               let randomId = new Date().getTime()
               resData = [
-                { id: randomId + 0, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400','https://picsum.photos/500'], },
-                { id: randomId + 1, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/700','https://picsum.photos/600'], },
-                { id: randomId + 2, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/600'], },
-                { id: randomId + 3, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/700'], },
-                { id: randomId + 4, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/800'], },
-                { id: randomId + 5, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/900'], },
-                { id: randomId + 6, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1000'], },
-                { id: randomId + 7, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1100'], },
-                { id: randomId + 8, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1200'], },
-                { id: randomId + 9, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1300'], },
-                { id: randomId + 10, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1400'], },
-                { id: randomId + 11, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1500'], },
+                { id: randomId + 0, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/400','https://picsum.photos/500'], igLink: 'https://www.instagram.com/', },
+                { id: randomId + 1, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/700','https://picsum.photos/600'], igLink: '', },
+                { id: randomId + 2, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/600'], igLink: 'https://www.instagram.com/', },
+                { id: randomId + 3, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/700'], igLink: 'https://www.instagram.com/', },
+                { id: randomId + 4, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/800'], igLink: '', },
+                { id: randomId + 5, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/900'], igLink: '', },
+                { id: randomId + 6, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1000'], igLink: '', },
+                { id: randomId + 7, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1100'], igLink: '', },
+                { id: randomId + 8, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1200'], igLink: '', },
+                { id: randomId + 9, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1300'], igLink: '', },
+                { id: randomId + 10, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1400'], igLink: '', },
+                { id: randomId + 11, name: '糖醋小小排(1圖)', age: 31, county: '桃園市', heartISent: 0, heart: 800, hobby: ['Movie star'], avatar: ['https://picsum.photos/1500'], igLink: '', },
               ]
   
               This.api.list.push( ...resData )

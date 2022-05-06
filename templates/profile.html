@@ -40,49 +40,52 @@
     <main id="main">
       <div class="container">
         <div class="row align-items-center">
-          <div :id="id" class="col-lg-4">
-            <div class="pCard">
-              <div class="pCard-pic">
-                <div :id="'SwipeImage'+id" class="swiper swiper-container SwipeImage">
-                  <div class="swiper-wrapper">
-                    <div v-for="avatar in avatars" class="swiper-slide">
-                      <div class="ratio ratio-1x1 img-full" :style="`background-image: url(${avatar})`"></div>
+          <template v-for="(item,idx) in api.list">
+            <div :id="id" class="col-lg-4">
+              <div class="pCard">
+                <div class="pCard-pic">
+                  <div :id="'SwipeImage'+id" class="swiper swiper-container SwipeImage">
+                    <div class="swiper-wrapper">
+                      <div v-for="avatar in item.avatars" class="swiper-slide">
+                        <div class="ratio ratio-1x1 img-full" :style="`background-image: url(${avatar})`"></div>
+                      </div>
                     </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                   </div>
-                  <div class="swiper-button-next"></div>
-                  <div class="swiper-button-prev"></div>
+  
+                  <a class="pos-a loc-3 p-3 text-white" style="z-index: 1" v-if="item.igLink" :href="item.igLink">
+                    <img src="/static/common/img/svg/ig.svg" onload="SVGInject(this)">
+                  </a>
                 </div>
-
-                <div class="pCard-pic-bottom">
+  
+                <div class="pCard-bottom">
                   <div class="ch-gy-2">
                     <div :id="'SwipeBadge'+id" class="swiper swiper-container SwipeBadge">
                       <div class="swiper-wrapper">
-                        <div v-for="hobby in hobbies" class="swiper-slide w-auto">
+                        <div v-for="hobby in item.hobbies" class="swiper-slide w-auto">
                           <div class="pCard-badge">{{hobby}}</div>
                         </div>
                       </div>
                     </div>
-                    <div class="fs-h3 text-more">{{name}}</div>
+                    <div class="fs-h3 text-more">{{item.name}}</div>
                     <div class="fs-label flex-center-a ch-gx-3">
-                      <div class="img-text"><img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span>{{age}}，{{county}}</span></div>
-                      <div class="img-text"><img src="/static/common/img/svg/heart.svg" class="svg20" onload="SVGInject(this)"><span>{{heart}}</span></div>
+                      <div class="img-text"><img src="/static/common/img/svg/Location.svg" onload="SVGInject(this)"><span>{{item.age}}，{{item.county}}</span></div>
+                      <div class="img-text"><img src="/static/common/img/svg/heart.svg" class="svg20"><span>{{item.heart}}</span></div>
                     </div>
+                  </div>
+                  <div class="d-flex justify-content-between mt-3">
+                    <button class="btn btn-brand w-auto" @click="openModal_hangout(item)">
+                      <img class="me-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)">Lets Hangout
+                    </button>
+                    <button class="btn btn-brand-ol btn-round" @click="openModal_heart(item)">
+                      <img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)">
+                    </button>
                   </div>
                 </div>
               </div>
-
-              <div class="pCard-bottom">
-                <div class="d-flex justify-content-between">
-                  <button class="btn btn-brand w-auto" @click="openModal_hangout(item)">
-                    <img class="me-3" src="/static/common/img/svg/Location.svg" onload="SVGInject(this)">Lets Hangout
-                  </button>
-                  <button class="btn btn-brand-ol btn-round" @click="openModal_heart(item)">
-                    <img src="/static/common/img/svg/comment-heart.svg" onload="SVGInject(this)">
-                  </button>
-                </div>
-              </div>
             </div>
-          </div>
+          </template>
         </div>
       </div>
     </main>
@@ -112,14 +115,21 @@
     new Vue({
       el: '#main',
       data: {
-        id: 'id0001', 
-        name: '動森小廚神 🐣 小菜雞(3圖90心)', 
-        age: 22, 
-        county: '台北市', 
-        heart: 1000, 
-        heartISent: 150, 
-        hobbies: ['Coffee Elite', 'Concert', 'Movie star'], 
-        avatars: ['/static/common/img/avatar/2.jpg','/static/common/img/avatar/3.jpg','/static/common/img/avatar/4.jpg'],
+        api: {
+          list: [
+            {
+              id: 'id0001', 
+              name: '動森小廚神 🐣 小菜雞(3圖90心)', 
+              age: 22, 
+              county: '台北市', 
+              heart: 1000, 
+              heartISent: 150, 
+              hobbies: ['Coffee Elite', 'Concert', 'Movie star'], 
+              avatars: ['/static/common/img/avatar/2.jpg','/static/common/img/avatar/3.jpg','/static/common/img/avatar/4.jpg'],
+              igLink: 'https://www.instagram.com/',
+            }
+          ]
+        },
       },
       mounted() {
         this.createSwipers( this.id )
